@@ -1,12 +1,13 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import { Navbar } from "@/components/custom/navbar";
+import { HeroSection } from "@/components/custom/hero-section";
 import { FeaturedGrid } from "@/components/custom/featured-grid";
 import { FilterSection } from "@/components/custom/filter-section";
-import { CardGrid, CardItem } from "@/components/custom/card-grid";
+import { CardGrid } from "@/components/custom/card-grid";
 import { Footer } from "@/components/custom/footer";
 import { MOCK_ITEMS } from "@/base/constants/mock-data";
-import { useMemo, useState } from "react";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +19,7 @@ export default function Home() {
       const matchesCategory =
         activeCategory === "all" || item.category === activeCategory;
 
-      // Search match
+      // Search query match
       const query = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !query ||
@@ -36,11 +37,19 @@ export default function Home() {
       {/* Header Navigation */}
       <Navbar />
 
-      {/* Hero Showcase Section */}
-      <main className="flex-1">
-        <FeaturedGrid />
+      {/* Hero Showcase Section with Landing Text & Search */}
+      <HeroSection
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
 
-        {/* Filter Section (search bar & tags) */}
+      <main className="flex-1">
+        {/* Featured Showcase Cards */}
+        {!searchQuery && activeCategory === "all" && <FeaturedGrid />}
+
+        {/* Filter Section (category tabs) */}
         <FilterSection
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -48,11 +57,11 @@ export default function Home() {
           setActiveCategory={setActiveCategory}
         />
 
-        {/* Dynamic Card Grid containing resources & updates */}
+        {/* Dynamic Article Card Grid */}
         <CardGrid items={filteredItems} />
       </main>
 
-      {/* Footer Branding & Actions */}
+      {/* Footer */}
       <Footer />
     </div>
   );

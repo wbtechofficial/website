@@ -1,151 +1,163 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Calendar, Users, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Clock, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { MOCK_ARTICLES } from "@/base/constants/mock-data";
 
 export function FeaturedGrid() {
+  const mainArticle = MOCK_ARTICLES[0]; // Primary Featured Article
+  const sideArticles = MOCK_ARTICLES.slice(1, 4); // 3 Stacked Articles for Right Column
+
   return (
-    <section className="container mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Main Featured Card - Left (Spans 2 columns on desktop) */}
-        <div className="lg:col-span-2 group relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 flex flex-col justify-between min-h-[450px] lg:min-h-[500px] shadow-sm transition-all duration-300 hover:shadow-md hover:border-muted-foreground/30">
-          {/* Stunning Premium Gradient Placeholder Background */}
-          <div className="absolute inset-0 -z-10 bg-radial-[at_top_right] from-violet-500/10 via-background to-background dark:from-violet-500/15" />
-          <div className="absolute top-0 right-0 -z-10 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl opacity-60 transition-transform duration-500 group-hover:scale-110" />
-          <div className="absolute inset-0 -z-10 opacity-[0.02] dark:opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <section
+      id="featured-feed"
+      className="container mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"
+    >
+      {/* Title & Description */}
+      <div className="mb-8">
+        <h2 className="font-heading text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+          Featured Articles
+        </h2>
+        <p className="text-muted-foreground text-sm max-w-2xl leading-relaxed">
+          A collection of the most insightful and widely-read articles in our
+          community.
+        </p>
+      </div>
 
-          {/* Card Top Details */}
-          <div>
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20 font-semibold px-3 py-1">
-                  Ecosystem Initiave
-                </Badge>
-                <Badge variant="outline" className="rounded-full font-medium px-2 py-0.5 text-xs">
-                  ★ Featured
-                </Badge>
-              </div>
-              <span className="text-xs font-semibold text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
-                5 min read
-              </span>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        {/* Main Featured Card - Left (Spans 7 columns on desktop) */}
+        <Link
+          href={`/article/${mainArticle.id}`}
+          className="group relative overflow-hidden rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between min-h-[460px] sm:min-h-[520px] transition-all duration-300 hover:border-primary/80 hover:shadow-[0_0_30px_rgba(222,53,76,0.3)] dark:hover:shadow-[0_0_35px_rgba(222,53,76,0.45)] lg:col-span-7"
+        >
+          {/* High Quality Unsplash Background Image */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <Image
+              src={mainArticle.imageUrl}
+              alt={mainArticle.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+            {/* Dark Gradient Overlay for Maximum Readability */}
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          </div>
+
+          {/* Top Header Badges */}
+          <div className="relative z-20 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Badge
+                variant="secondary"
+                className="rounded-full bg-primary text-primary-foreground border border-primary/30 font-semibold px-3 py-1 text-xs backdrop-blur-md shadow-xs"
+              >
+                {mainArticle.categoryLabel}
+              </Badge>
+              <Badge
+                variant="outline"
+                className="rounded-full font-semibold px-3 py-1 text-xs bg-white/10 text-white border-white/20 backdrop-blur-md"
+              >
+                <Sparkles className="h-3 w-3 mr-1 text-amber-300 inline" />
+                Featured
+              </Badge>
             </div>
+            <span className="text-xs font-semibold text-white/90 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 flex items-center gap-1">
+              <Clock className="h-3 w-3 text-amber-300" />
+              {mainArticle.readingTime}
+            </span>
+          </div>
 
+          {/* Bottom Article Content Area */}
+          <div className="relative z-20 mt-24 pt-6">
             <div className="max-w-2xl">
-              <h1 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-4 group-hover:text-primary transition-colors">
-                React Kolkata Unveils the west-bengal.tech Initiative to Empower Local Developers
-              </h1>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                A community-driven digital hub crafted to showcase West Bengal's talent, spotlight local startups, drive open-source contributions, and host the definitive tech job directory. Built by developers, for developers.
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-3 group-hover:text-primary transition-colors drop-shadow-sm">
+                {mainArticle.title}
+              </h2>
+              <p className="text-white/80 text-sm sm:text-base leading-relaxed line-clamp-3 mb-6">
+                {mainArticle.excerpt}
               </p>
             </div>
-          </div>
 
-          {/* Card Bottom Details */}
-          <div className="mt-8 pt-6 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-violet-500 to-indigo-500 flex items-center justify-center text-white font-bold text-sm shadow">
-                RK
+            {/* Author & Read Link Footer */}
+            <div className="pt-4 border-t border-white/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground font-extrabold text-xs flex items-center justify-center border border-white/30 shadow-md">
+                  {mainArticle.authorAvatarText}
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-white leading-none">
+                    {mainArticle.authorName}
+                  </p>
+                  <p className="text-[11px] text-white/70 mt-1">
+                    Published {mainArticle.date}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-xs font-bold leading-none">React Kolkata Team</p>
-                <p className="text-[11px] text-muted-foreground mt-1">Published Aug 6, 2026</p>
-              </div>
+
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-white group-hover:text-amber-200 transition-colors bg-white/15 hover:bg-white/25 px-4 py-2 rounded-full backdrop-blur-md border border-white/20 self-start sm:self-auto">
+                Read Article
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
             </div>
+          </div>
+        </Link>
 
-            <Link 
-              href="#updates" 
-              className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold hover:underline group-hover:text-primary transition-colors text-muted-foreground self-start sm:self-auto"
+        {/* Stacked Side Articles List - Right Column (Spans 5 columns on desktop - Matching Image 1 Reference) */}
+        <div className="lg:col-span-5 flex flex-col gap-3 justify-between">
+          {sideArticles.map((article) => (
+            <Link
+              key={article.id}
+              href={`/article/${article.id}`}
+              className="group relative flex flex-1 flex-row items-center gap-4 rounded-2xl border border-border/80 bg-card p-4 transition-all duration-300 hover:border-primary/70 hover:bg-muted/40 dark:hover:bg-card/90 hover:shadow-[0_0_18px_rgba(222,53,76,0.2)] dark:hover:shadow-[0_0_20px_rgba(222,53,76,0.35)]"
             >
-              Explore Updates
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              {/* Left Thumbnail Image */}
+              <div className="relative h-24 w-28 sm:w-32 shrink-0 overflow-hidden rounded-xl bg-muted border border-border/50">
+                <Image
+                  src={article.imageUrl}
+                  alt={article.title}
+                  fill
+                  sizes="128px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Right Article Details */}
+              <div className="flex flex-col justify-between flex-1 min-w-0 py-0.5">
+                <div>
+                  {/* Author & Date Line */}
+                  <div className="flex items-center gap-2 text-[11px] text-muted-foreground font-medium mb-1">
+                    <span className="font-semibold text-foreground truncate max-w-[120px]">
+                      {article.authorName}
+                    </span>
+                    <span>•</span>
+                    <span>{article.date}</span>
+                  </div>
+
+                  {/* Article Title */}
+                  <h3 className="font-heading text-sm sm:text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                </div>
+
+                {/* Category Tags */}
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <Badge
+                    variant="secondary"
+                    className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors"
+                  >
+                    {article.categoryLabel}
+                  </Badge>
+                  <span className="text-[10px] text-muted-foreground font-medium flex items-center gap-1">
+                    <Clock className="h-3 w-3" /> {article.readingTime}
+                  </span>
+                </div>
+              </div>
             </Link>
-          </div>
+          ))}
         </div>
-
-        {/* Stacked Cards - Right (Spans 1 column on desktop) */}
-        <div className="flex flex-col gap-6">
-          
-          {/* Card 1: Meetups/Events */}
-          <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 flex flex-col justify-between flex-1 min-h-[210px] shadow-sm transition-all duration-300 hover:shadow-md hover:border-muted-foreground/30">
-            {/* Background Gradient */}
-            <div className="absolute inset-0 -z-10 bg-radial-[at_top_right] from-amber-500/10 via-background to-background dark:from-amber-500/15" />
-            <div className="absolute top-0 right-0 -z-10 h-40 w-40 rounded-full bg-amber-500/20 blur-2xl opacity-55 transition-transform duration-500 group-hover:scale-110" />
-
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Badge variant="secondary" className="rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-semibold px-2.5 py-0.5 text-xs">
-                  Meetup
-                </Badge>
-                <span className="text-[11px] font-semibold text-muted-foreground flex items-center gap-1">
-                  <Calendar className="h-3 w-3" /> Aug 29, 2026
-                </span>
-              </div>
-              <h3 className="font-heading text-lg font-bold leading-snug group-hover:text-primary transition-colors">
-                React Kolkata Meetup #18: Building Premium Web Apps
-              </h3>
-              <p className="text-muted-foreground text-xs leading-relaxed mt-2 line-clamp-2">
-                Join our quarterly in-person developer meetup. Experience deep-dive technical talks, lightning demos, and network with 150+ builders.
-              </p>
-            </div>
-
-            <div className="mt-4 pt-4 border-t border-border/40 flex items-center justify-between">
-              <span className="text-[11px] font-medium text-muted-foreground flex items-center gap-1">
-                <Users className="h-3 w-3" /> Sector V, Salt Lake
-              </span>
-              <a 
-                href="https://x.com/reactkolkata" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline"
-              >
-                RSVP Now
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Card 2: Startup Spotlight */}
-          <div className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 flex flex-col justify-between flex-1 min-h-[210px] shadow-sm transition-all duration-300 hover:shadow-md hover:border-muted-foreground/30">
-            {/* Background Gradient */}
-            <div className="absolute inset-0 -z-10 bg-radial-[at_top_right] from-emerald-500/10 via-background to-background dark:from-emerald-500/15" />
-            <div className="absolute top-0 right-0 -z-10 h-40 w-40 rounded-full bg-emerald-500/20 blur-2xl opacity-55 transition-transform duration-500 group-hover:scale-110" />
-
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Badge variant="secondary" className="rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold px-2.5 py-0.5 text-xs">
-                  Startup Spotlight
-                </Badge>
-                <span className="text-[11px] font-semibold text-muted-foreground flex items-center gap-1">
-                  <Sparkles className="h-3 w-3" /> AI & Automation
-                </span>
-              </div>
-              <h3 className="font-heading text-lg font-bold leading-snug group-hover:text-primary transition-colors">
-                Spotlight: BengalAI Tech
-              </h3>
-              <p className="text-muted-foreground text-xs leading-relaxed mt-2 line-clamp-2">
-                Pioneering localized AI agents and models for Indian regional languages. Check out their new open source LLM toolkit.
-              </p>
-            </div>
-
-            <div className="mt-4 pt-4 border-t border-border/40 flex items-center justify-between">
-              <span className="text-[11px] font-medium text-muted-foreground">
-                Founded: 2025 • Kolkata
-              </span>
-              <Link 
-                href="#startups"
-                className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
-              >
-                Read Showcase
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </section>
   );
