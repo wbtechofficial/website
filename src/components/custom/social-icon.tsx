@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { cn } from "@/lib/utils";
 
 export type SocialIconName =
@@ -54,8 +53,10 @@ export function SocialIcon({
   const iconSrc = src || ICON_MAP[iconKey] || ICON_MAP.github;
 
   const isMonochrome = MONOCHROME_ICONS.has(iconKey);
-  const sizeClass = typeof size === "number" ? "" : SIZE_MAP[size] || SIZE_MAP.md;
-  const customDimension = typeof size === "number" ? { width: size, height: size } : {};
+  const sizeClass =
+    typeof size === "number" ? "" : SIZE_MAP[size] || SIZE_MAP.md;
+  const customDimension =
+    typeof size === "number" ? { width: size, height: size } : {};
 
   return (
     <div
@@ -63,7 +64,7 @@ export function SocialIcon({
         "relative inline-flex items-center justify-center shrink-0 transition-all duration-300",
         colorPopOnHover &&
           "grayscale opacity-75 hover:grayscale-0 hover:opacity-100 group-hover:grayscale-0 group-hover:opacity-100 hover:scale-110 group-hover:scale-110",
-        className
+        className,
       )}
       style={customDimension}
     >
@@ -76,7 +77,7 @@ export function SocialIcon({
           // Flips dark monochrome paths (GitHub, X) to white in dark mode
           isMonochrome && "dark:invert dark:brightness-200",
           // Enhances color luminosity in dark mode for all icons
-          !isMonochrome && "dark:brightness-125 dark:contrast-110"
+          !isMonochrome && "dark:brightness-125 dark:contrast-110",
         )}
       />
     </div>

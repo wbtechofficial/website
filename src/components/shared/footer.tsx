@@ -1,17 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { openCookiePreferences } from "@/components/custom/cookie-consent";
+import { openCookiePreferences } from "@/components/shared/cookie-consent";
 import { MapPin, Heart, Sparkles } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="w-full bg-gradient-to-b from-zinc-950 via-black to-zinc-950 border-t border-zinc-900/90 text-zinc-300 mt-16 transition-colors">
       <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-zinc-900/80">
-          
           {/* Brand & Community Details (Spans 2 columns on desktop) */}
           <div className="lg:col-span-2 flex flex-col justify-between space-y-4">
             <div>
@@ -25,7 +23,9 @@ export function Footer() {
               </Link>
 
               <p className="mt-4 text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm font-normal">
-                An open digital community unifying West Bengal's engineering talent. Discover deep-tech startups, explore regional open-source projects, and connect with technology opportunities.
+                An open digital community unifying West Bengal's engineering
+                talent. Discover deep-tech startups, explore regional
+                open-source projects, and connect with technology opportunities.
               </p>
 
               {/* Community Location & Sponsorship Pill */}
@@ -34,7 +34,8 @@ export function Footer() {
                   <MapPin className="h-3 w-3 text-red-500" /> Sector V, Kolkata
                 </span>
                 <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-full border border-zinc-800">
-                  <Sparkles className="h-3 w-3 text-purple-400" /> React Kolkata Guild
+                  <Sparkles className="h-3 w-3 text-purple-400" /> React Kolkata
+                  Guild
                 </span>
               </div>
             </div>
@@ -47,22 +48,34 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs font-medium text-zinc-400">
               <li>
-                <Link href="#featured-feed" className="hover:text-white transition-colors">
+                <Link
+                  href="#featured-feed"
+                  className="hover:text-white transition-colors"
+                >
                   Featured Articles
                 </Link>
               </li>
               <li>
-                <Link href="#startups" className="hover:text-white transition-colors">
+                <Link
+                  href="#startups"
+                  className="hover:text-white transition-colors"
+                >
                   Bengal Startups
                 </Link>
               </li>
               <li>
-                <Link href="#opensource" className="hover:text-white transition-colors">
+                <Link
+                  href="#opensource"
+                  className="hover:text-white transition-colors"
+                >
                   Open Source Repos
                 </Link>
               </li>
               <li>
-                <Link href="#updates" className="hover:text-white transition-colors">
+                <Link
+                  href="#updates"
+                  className="hover:text-white transition-colors"
+                >
                   Job Directory
                 </Link>
               </li>
@@ -76,7 +89,10 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs font-medium text-zinc-400">
               <li>
-                <Link href="/project-submissions" className="hover:text-white transition-colors">
+                <Link
+                  href="/project-submissions"
+                  className="hover:text-white transition-colors"
+                >
                   Submit Project / Story
                 </Link>
               </li>
@@ -101,7 +117,10 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/article/meetup-1" className="hover:text-white transition-colors">
+                <Link
+                  href="/article/meetup-1"
+                  className="hover:text-white transition-colors"
+                >
                   Monthly Meetup Schedule
                 </Link>
               </li>
@@ -144,16 +163,18 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
         </div>
 
         {/* Footer Bottom Metadata */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-normal">
           <p>
-            © {new Date().getFullYear()} west-bengal.tech initiative. Built for the developer community.
+            © {new Date().getFullYear()} west-bengal.tech initiative. Built for
+            the developer community.
           </p>
           <p className="flex items-center gap-1">
-            Crafted with <Heart className="h-3.5 w-3.5 fill-red-500 text-red-500 inline" /> by{" "}
+            Crafted with{" "}
+            <Heart className="h-3.5 w-3.5 fill-red-500 text-red-500 inline" />{" "}
+            by{" "}
             <a
               href="https://github.com/reactkolkata"
               target="_blank"
@@ -164,7 +185,6 @@ export function Footer() {
             </a>
           </p>
         </div>
-
       </div>
     </footer>
   );

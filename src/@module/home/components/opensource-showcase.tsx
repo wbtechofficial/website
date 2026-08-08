@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Code2, Star, GitFork, ExternalLink, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { REPOS } from "@/base/data/repo-mock-data";
 
 export interface OpenSourceRepo {
   id: string;
@@ -15,49 +16,13 @@ export interface OpenSourceRepo {
   link: string;
 }
 
-const REPOS: OpenSourceRepo[] = [
-  {
-    id: "devstudio-grid",
-    name: "react-grid-devstudio",
-    description:
-      "A draggable component layout and dashboard builder engine for React & Next.js App Router.",
-    stars: "5.2k",
-    forks: "410",
-    language: "TypeScript",
-    maintainer: "Priyanka Roy",
-    link: "/article/opensource-1",
-  },
-  {
-    id: "indic-tokenizer",
-    name: "indic-tokenizer-py",
-    description:
-      "Fast subword tokenizer optimized for Indic regional scripts (Bengali, Hindi, Assamese).",
-    stars: "1.8k",
-    forks: "180",
-    language: "Python / Rust",
-    maintainer: "BengalAI Guild",
-    link: "/article/startup-1",
-  },
-  {
-    id: "tailwind-v4-builder",
-    name: "tailwind-v4-grid-gen",
-    description:
-      "Visual grid layout builder exporting zero-dependency CSS & Tailwind v4 utility tokens.",
-    stars: "3.4k",
-    forks: "290",
-    language: "TypeScript / React",
-    maintainer: "Debayan Mitra",
-    link: "/article/opensource-2",
-  },
-];
-
 export function OpenSourceShowcase() {
   return (
     <section className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary dark:text-primary mb-2">
             <Code2 className="h-3.5 w-3.5" /> Public Infrastructure
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
@@ -71,7 +36,7 @@ export function OpenSourceShowcase() {
 
         <Link
           href="#updates"
-          className="inline-flex items-center gap-1 text-xs font-bold text-secondary hover:underline self-start sm:self-auto shrink-0"
+          className="inline-flex items-center gap-1 text-xs font-bold text-secondary dark:text-primary hover:underline self-start sm:self-auto shrink-0"
         >
           Explore repositories <ExternalLink className="h-3.5 w-3.5" />
         </Link>

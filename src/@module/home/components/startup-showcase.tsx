@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Rocket, ExternalLink, MapPin, Building2 } from "lucide-react";
+import { Rocket, ExternalLink, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { STARTUPS } from "@/base/data/startups-mock-data";
 
 export interface StartupItem {
   id: string;
@@ -16,57 +17,9 @@ export interface StartupItem {
   link: string;
 }
 
-const STARTUPS: StartupItem[] = [
-  {
-    id: "bengal-ai",
-    name: "BengalAI",
-    tagline: "PioneeringIndic LLMs and domain-specific AI tokenizers for Indic regional languages.",
-    category: "AI & DeepTech",
-    location: "Salt Lake Sector V, Kolkata",
-    funding: "$1.2M Pre-Seed",
-    founded: "2025",
-    logoText: "BAI",
-    link: "/article/startup-1",
-  },
-  {
-    id: "devstudio",
-    name: "DevStudio",
-    tagline: "Open-source draggable component dashboard builder for React & Next.js.",
-    category: "Developer Tools",
-    location: "Kolkata, WB",
-    funding: "Bootstrapped",
-    founded: "2024",
-    logoText: "DS",
-    link: "/article/opensource-1",
-  },
-  {
-    id: "bengalscale",
-    name: "BengalScale",
-    tagline: "High-throughput cloud data pipelines and real-time analytics platforms.",
-    category: "Cloud Infrastructure",
-    location: "New Town, Kolkata",
-    funding: "Series A",
-    founded: "2023",
-    logoText: "BS",
-    link: "/article/job-1",
-  },
-  {
-    id: "healthkolkata",
-    name: "HealthKolkata",
-    tagline: "Regional telemedicine platform connecting rural clinics with specialist doctors.",
-    category: "HealthTech",
-    location: "Durgapur & Kolkata",
-    funding: "Seed Funded",
-    founded: "2024",
-    logoText: "HK",
-    link: "/article/job-2",
-  },
-];
-
 export function StartupShowcase() {
   return (
     <section className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 border-b border-border/40">
-      
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
@@ -74,10 +27,11 @@ export function StartupShowcase() {
             <Rocket className="h-3.5 w-3.5" /> Regional Innovation
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-             Bengal Startup Spotlight
+            Bengal Startup Spotlight
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed mt-1 max-w-2xl">
-            Highlighting technology startups founded across Kolkata, Salt Lake, Durgapur, and Siliguri building for global markets.
+            Highlighting technology startups founded across Kolkata, Salt Lake,
+            Durgapur, and Siliguri building for global markets.
           </p>
         </div>
 
@@ -109,7 +63,8 @@ export function StartupShowcase() {
                       {item.name}
                     </h3>
                     <p className="text-[10px] text-muted-foreground font-medium flex items-center gap-1 mt-0.5">
-                      <MapPin className="h-3 w-3 text-primary/70" /> {item.location}
+                      <MapPin className="h-3 w-3 text-primary/70" />{" "}
+                      {item.location}
                     </p>
                   </div>
                 </div>
@@ -123,7 +78,10 @@ export function StartupShowcase() {
 
             {/* Footer Badges */}
             <div className="pt-3 border-t border-border/50 flex items-center justify-between text-[10px]">
-              <Badge variant="outline" className="rounded-full px-2.5 py-0.5 font-semibold text-[10px]">
+              <Badge
+                variant="outline"
+                className="rounded-full px-2.5 py-0.5 font-semibold text-[10px]"
+              >
                 {item.category}
               </Badge>
               <span className="font-semibold text-foreground bg-muted/60 px-2 py-0.5 rounded-full">
@@ -133,7 +91,6 @@ export function StartupShowcase() {
           </Link>
         ))}
       </div>
-
     </section>
   );
 }

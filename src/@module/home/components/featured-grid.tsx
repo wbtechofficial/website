@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Clock, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { MOCK_ARTICLES } from "@/base/constants/mock-data";
+import { MOCK_ARTICLES } from "@/base/data/mock-data";
 
 export function FeaturedGrid() {
   const mainArticle = MOCK_ARTICLES[0]; // Primary Featured Article
