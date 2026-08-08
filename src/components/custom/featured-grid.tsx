@@ -17,7 +17,7 @@ export function FeaturedGrid() {
     >
       {/* Title & Description */}
       <div className="mb-8">
-        <h2 className="font-heading text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+        <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight mb-2">
           Featured Articles
         </h2>
         <p className="text-muted-foreground text-sm max-w-2xl leading-relaxed">

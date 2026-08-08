@@ -1,11 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { AnnouncementBanner } from "@/components/custom/announcement-banner";
 import { Navbar } from "@/components/custom/navbar";
 import { HeroSection } from "@/components/custom/hero-section";
 import { FeaturedGrid } from "@/components/custom/featured-grid";
+import { StartupShowcase } from "@/components/custom/startup-showcase";
+import { OpenSourceShowcase } from "@/components/custom/opensource-showcase";
 import { FilterSection } from "@/components/custom/filter-section";
 import { CardGrid } from "@/components/custom/card-grid";
+import { NewsletterCard } from "@/components/custom/newsletter-card";
+import { FloatingSocials } from "@/components/custom/floating-socials";
 import { Footer } from "@/components/custom/footer";
 import { MOCK_ITEMS } from "@/base/constants/mock-data";
 
@@ -34,10 +39,13 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground flex flex-col">
+      {/* Community Announcement Top Banner */}
+      <AnnouncementBanner />
+
       {/* Header Navigation */}
       <Navbar />
 
-      {/* Hero Showcase Section with Landing Text & Search */}
+      {/* Refactored Human-Centric Hero Section */}
       <HeroSection
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -45,11 +53,17 @@ export default function Home() {
         setActiveCategory={setActiveCategory}
       />
 
-      <main className="flex-1">
-        {/* Featured Showcase Cards */}
+      <main className="flex-1 space-y-2">
+        {/* Featured Stories Grid */}
         {!searchQuery && activeCategory === "all" && <FeaturedGrid />}
 
-        {/* Filter Section (category tabs) */}
+        {/* Regional Startups Spotlight Section */}
+        {/* {!searchQuery && activeCategory === "all" && <StartupShowcase />} */}
+
+        {/* Regional Open Source Repos Section */}
+        {!searchQuery && activeCategory === "all" && <OpenSourceShowcase />}
+
+        {/* Filter Toolbar (Search & Category Pills) */}
         <FilterSection
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -57,9 +71,15 @@ export default function Home() {
           setActiveCategory={setActiveCategory}
         />
 
-        {/* Dynamic Article Card Grid */}
+        {/* Dynamic Article Grid */}
         <CardGrid items={filteredItems} />
+
+        {/* Weekly Newsletter Sign-Up Card */}
+        <NewsletterCard />
       </main>
+
+      {/* Sticky Floating Social Media Sidebar */}
+      <FloatingSocials position="left" />
 
       {/* Footer */}
       <Footer />

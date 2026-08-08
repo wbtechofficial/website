@@ -68,7 +68,7 @@ export function CardGrid({ items }: CardGridProps) {
           <Link
             key={item.id}
             href={item.link.startsWith("/article") ? item.link : `/article/${item.id}`}
-            className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-card hover:bg-muted/40 dark:hover:bg-card/90 transition-all duration-300 hover:border-primary/70 hover:shadow-[0_0_20px_rgba(222,53,76,0.25)] dark:hover:shadow-[0_0_25px_rgba(222,53,76,0.4)]"
+            className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-card to-primary/5 hover:from-card hover:via-card hover:to-primary/10 transition-all duration-300 hover:border-primary/70 hover:shadow-[0_0_20px_rgba(222,53,76,0.25)] dark:hover:shadow-[0_0_25px_rgba(222,53,76,0.4)]"
           >
             {/* Top Unsplash Image Header */}
             <div className="relative h-52 w-full overflow-hidden bg-muted">
