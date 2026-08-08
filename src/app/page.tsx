@@ -5,12 +5,12 @@ import { AnnouncementBanner } from "@/components/custom/announcement-banner";
 import { Navbar } from "@/components/custom/navbar";
 import { HeroSection } from "@/components/custom/hero-section";
 import { FeaturedGrid } from "@/components/custom/featured-grid";
-import { StartupShowcase } from "@/components/custom/startup-showcase";
 import { OpenSourceShowcase } from "@/components/custom/opensource-showcase";
 import { FilterSection } from "@/components/custom/filter-section";
 import { CardGrid } from "@/components/custom/card-grid";
 import { NewsletterCard } from "@/components/custom/newsletter-card";
 import { FloatingSocials } from "@/components/custom/floating-socials";
+import { CookieConsent } from "@/components/custom/cookie-consent";
 import { Footer } from "@/components/custom/footer";
 import { MOCK_ITEMS } from "@/base/constants/mock-data";
 
@@ -83,6 +83,9 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* System Integrated Cookie Consent Notification */}
+      <CookieConsent />
     </div>
   );
 }

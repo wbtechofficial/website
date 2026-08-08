@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { openCookiePreferences } from "@/components/custom/cookie-consent";
 import { MapPin, Heart, Sparkles } from "lucide-react";
 
 export function Footer() {
@@ -127,6 +128,14 @@ export function Footer() {
                 <Link href="#" className="hover:text-white transition-colors">
                   Community Code of Conduct
                 </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => openCookiePreferences()}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Cookie Preferences
+                </button>
               </li>
               <li>
                 <Link href="#" className="hover:text-white transition-colors">
