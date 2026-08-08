@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, Plus } from "lucide-react";
+import { BrandLogo } from "@/components/custom/brand-logo";
 import { ThemeToggleDropdown } from "@/components/custom/theme-toggle-dropdown";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -17,10 +18,10 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "Updates", href: "#updates" },
+  { label: "Articles", href: "#featured-feed" },
   { label: "Startups", href: "#startups" },
   { label: "Open Source", href: "#opensource" },
-  { label: "Jobs", href: "#jobs" },
+  { label: "Jobs", href: "#updates" },
 ];
 
 export function Navbar() {
@@ -30,28 +31,18 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        
         {/* Logo Section */}
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center">
-            <img
-              src="/brand-logo/west-bengal-tech-logo-dark.svg"
-              alt="west-bengal.tech"
-              className="h-8 w-auto dark:hidden block transition-transform hover:scale-[1.02]"
-            />
-            <img
-              src="/brand-logo/west-bengal-tech-logo-light.svg"
-              alt="west-bengal.tech"
-              className="h-8 w-auto hidden dark:block transition-transform hover:scale-[1.02]"
-            />
-          </Link>
+        <div className="flex items-center gap-8">
+          <BrandLogo size="md" />
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-sm">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors hover:text-primary text-muted-foreground font-semibold"
+                className="transition-colors hover:text-primary text-foreground/80 font-medium text-xs sm:text-sm tracking-tight"
               >
                 {item.label}
               </Link>
@@ -69,10 +60,11 @@ export function Navbar() {
             href="/project-submissions"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "hidden sm:inline-flex px-4 font-medium shadow-sm transition-all hover:shadow-md p-5",
+              "hidden sm:inline-flex rounded-full px-4 text-xs font-semibold shadow-xs hover:shadow-md transition-all gap-1.5",
             )}
           >
-            Submit Project
+            <Plus className="h-3.5 w-3.5" />
+            <span>Submit Project</span>
           </Link>
 
           {/* Mobile Navigation Trigger */}
@@ -88,16 +80,7 @@ export function Navbar() {
             <SheetContent side="right" className="w-[300px] sm:w-[350px]">
               <SheetHeader className="text-left border-b pb-4 mb-6">
                 <SheetTitle>
-                  <img
-                    src="/brand-logo/west-bengal-tech-logo-dark.svg"
-                    alt="west-bengal.tech"
-                    className="h-7 w-auto dark:hidden block"
-                  />
-                  <img
-                    src="/brand-logo/west-bengal-tech-logo-light.svg"
-                    alt="west-bengal.tech"
-                    className="h-7 w-auto hidden dark:block"
-                  />
+                  <BrandLogo size="sm" />
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col space-y-4">
@@ -106,13 +89,13 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-semibold text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10"
+                    className="text-base font-medium text-foreground/80 hover:text-primary transition-colors py-2 border-b border-border/10"
                   >
                     {item.label}
                   </Link>
                 ))}
                 <div className="pt-4 flex items-center justify-between">
-                  <span className="text-sm font-medium text-muted-foreground">
+                  <span className="text-xs font-medium text-muted-foreground">
                     Appearance
                   </span>
                   <ThemeToggleDropdown />
@@ -122,10 +105,11 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     buttonVariants(),
-                    "w-full mt-6 font-medium flex items-center justify-center",
+                    "w-full mt-6 rounded-full font-semibold text-xs flex items-center justify-center gap-1.5",
                   )}
                 >
-                  Submit Project
+                  <Plus className="h-3.5 w-3.5" />
+                  <span>Submit Project</span>
                 </Link>
               </div>
             </SheetContent>
