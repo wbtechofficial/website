@@ -3,18 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  Plus,
-  Home as HomeIcon,
-  FileText,
-  Rocket,
-  Code2,
-  Briefcase,
-  ChevronRight,
-  Sparkles,
-  MapPin,
-} from "lucide-react";
+import { Menu, Plus, ChevronRight, Sparkles, MapPin } from "lucide-react";
 import { BrandLogo } from "@/components/custom/brand-logo";
 import { ThemeToggleDropdown } from "@/components/custom/theme-toggle-dropdown";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -26,14 +15,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-
-const NAV_ITEMS = [
-  { label: "Home", href: "/", icon: HomeIcon },
-  { label: "Articles", href: "#featured-feed", icon: FileText },
-  { label: "Startups", href: "#startups", icon: Rocket },
-  { label: "Open Source", href: "#opensource", icon: Code2 },
-  { label: "Jobs", href: "#updates", icon: Briefcase },
-];
+import { NAVIGATION_ITEMS } from "@/base/constants/navigation-items";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -48,7 +30,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 text-sm">
-            {NAV_ITEMS.map((item) => (
+            {NAVIGATION_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -113,7 +95,7 @@ export function Navbar() {
                   className="flex flex-col space-y-1.5"
                   aria-label="Mobile Navigation"
                 >
-                  {NAV_ITEMS.map((item) => {
+                  {NAVIGATION_ITEMS.map((item) => {
                     const Icon = item.icon;
                     const isActive = pathname === item.href;
 
