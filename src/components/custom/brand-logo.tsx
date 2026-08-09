@@ -23,19 +23,19 @@ export function BrandLogo({
   const logoContent = (
     <div className={cn("inline-flex items-center gap-2 group", className)}>
       <img
-        src="/brand-logo/west-bengal-tech-logo-dark.svg"
+        src="/brand-logo/west-bengal-tech-short-dark.svg"
         alt="west-bengal.tech"
         className={cn(
           SIZE_CLASSES[size],
-          "w-auto dark:hidden block transition-transform duration-300 group-hover:scale-[1.03]"
+          "w-auto dark:hidden block transition-transform duration-300 group-hover:scale-[1.03]",
         )}
       />
       <img
-        src="/brand-logo/west-bengal-tech-logo-light.svg"
+        src="/brand-logo/west-bengal-tech-short-light.svg"
         alt="west-bengal.tech"
         className={cn(
           SIZE_CLASSES[size],
-          "w-auto hidden dark:block transition-transform duration-300 group-hover:scale-[1.03]"
+          "w-auto hidden dark:block transition-transform duration-300 group-hover:scale-[1.03]",
         )}
       />
     </div>

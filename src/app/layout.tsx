@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Feed | West Bengal Tech",
   description: "The Official Technology Hub of West Bengal",
   icons: {
-    icon: "/brand-logo/west-bengal-tech-logo-dark.svg",
+    icon: "/brand-logo/west-bengal-tech-icon.svg",
   },
 };
 

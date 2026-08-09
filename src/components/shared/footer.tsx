@@ -16,7 +16,7 @@ export function Footer() {
               {/* Always Light Logo for Dark Footer */}
               <Link href="/" className="inline-block group">
                 <img
-                  src="/brand-logo/west-bengal-tech-logo-light.svg"
+                  src="/brand-logo/west-bengal-tech-full-light.svg"
                   alt="west-bengal.tech"
                   className="h-8 sm:h-9 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
                 />
