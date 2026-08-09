@@ -88,13 +88,13 @@ export function CardGrid({ items }: CardGridProps) {
 
               {/* Tag Overlay */}
               <div className="absolute top-4 left-4 flex items-center gap-2">
-                <Badge className="rounded-full bg-background/90 text-foreground border border-border/60 shadow-xs font-semibold text-[11px] px-3 py-0.5 backdrop-blur-md">
+                <Badge className="rounded-md bg-background/90 text-foreground border border-border/60 shadow-xs font-semibold text-[11px] px-3 py-0.5 backdrop-blur-md">
                   {item.categoryLabel}
                 </Badge>
               </div>
 
               {item.readingTime && (
-                <div className="absolute bottom-3 right-3 text-[10px] font-semibold text-white/90 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-white/10">
+                <div className="absolute bottom-3 right-3 text-[10px] font-semibold text-white/90 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-md flex items-center gap-1 border border-white/10">
                   <Clock className="h-3 w-3" />
                   {item.readingTime}
                 </div>
@@ -108,7 +108,7 @@ export function CardGrid({ items }: CardGridProps) {
                   <h3 className="font-heading text-lg font-bold leading-snug group-hover:text-primary transition-colors line-clamp-2">
                     {item.title}
                   </h3>
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-muted/40 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-muted/40 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
                     <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export function CardGrid({ items }: CardGridProps) {
               {/* Author & Date Footer */}
               <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between text-xs text-muted-foreground">
                 <div className="flex items-center gap-2.5">
-                  <div className="h-7 w-7 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[10px] font-extrabold border border-primary/20">
+                  <div className="h-7 w-7 rounded-md bg-primary/10 text-primary flex items-center justify-center text-[10px] font-extrabold border border-primary/20">
                     {item.authorAvatarText}
                   </div>
                   <span className="font-semibold text-foreground text-xs">{item.authorName}</span>
@@ -138,7 +138,7 @@ export function CardGrid({ items }: CardGridProps) {
           <Button
             onClick={handleLoadMore}
             disabled={isLoadingMore}
-            className="rounded-full px-8 font-semibold shadow-xs hover:shadow-md transition-all min-w-[150px]"
+            className="rounded-xl px-8 font-semibold shadow-xs hover:shadow-md transition-all min-w-[150px]"
             variant="outline"
           >
             {isLoadingMore ? (

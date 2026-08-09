@@ -52,7 +52,7 @@ export function HeroSection({
           {/* Left Column: Refactored Headline & Intro (Spans 8 cols) */}
           <div className="lg:col-span-8 space-y-5">
             {/* Monospaced Guild Tag */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/50 px-3.5 py-1 text-xs font-medium text-foreground backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 rounded-md border border-border/60 bg-muted/50 px-3.5 py-1 text-xs font-medium text-foreground backdrop-blur-md">
               <Terminal className="h-3.5 w-3.5 text-primary" />
               <span className="font-mono text-[11px] sm:text-xs">
                 west-bengal.tech // developer network
@@ -67,7 +67,7 @@ export function HeroSection({
             </h1>
 
             {/* Subtitle Paragraph */}
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
+            <p className="text-primary-muted text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
               An open digital community powered by developers under React
               Kolkata. Discover regional technology news, spotlight local
               deep-tech startups, and connect with technical careers across West
@@ -79,7 +79,7 @@ export function HeroSection({
               <Button
                 onClick={scrollToFeed}
                 size="lg"
-                className="rounded-full px-6 py-2.5 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group"
+                className="rounded-xl px-6 py-2.5 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group"
               >
                 <span>Explore Articles</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -93,7 +93,7 @@ export function HeroSection({
                     <button
                       key={tag.label}
                       onClick={() => handleTagClick(tag.value)}
-                      className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
+                      className={`rounded-md px-3 py-1 text-xs font-normal transition-all ${
                         isSelected
                           ? "bg-primary text-primary-foreground font-semibold shadow-xs"
                           : "bg-card border border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted"

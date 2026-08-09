@@ -54,7 +54,7 @@ export function FilterSection({
             placeholder="Search updates, startups..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 rounded-full bg-muted/40 focus-visible:bg-background transition-all"
+            className="pl-10 h-10 rounded-md bg-muted/40 focus-visible:bg-background transition-all"
           />
         </div>
 
@@ -69,9 +69,9 @@ export function FilterSection({
                   variant={isActive ? "default" : "outline"}
                   onClick={() => setActiveCategory(cat.id)}
                   size="sm"
-                  className={`rounded-full px-4 text-xs font-semibold tracking-wide transition-all ${
+                  className={`rounded-lg py-2 px-4 text-xs font-light tracking-wide transition-all cursor-pointer ${
                     isActive
-                      ? "shadow-sm"
+                      ? "shadow-sm font-bold"
                       : "hover:bg-muted text-muted-foreground"
                   }`}
                 >

@@ -80,11 +80,11 @@ export function StartupShowcase() {
             <div className="pt-3 border-t border-border/50 flex items-center justify-between text-[10px]">
               <Badge
                 variant="outline"
-                className="rounded-full px-2.5 py-0.5 font-semibold text-[10px]"
+                className="rounded-md px-2.5 py-0.5 font-semibold text-[10px]"
               >
                 {item.category}
               </Badge>
-              <span className="font-semibold text-foreground bg-muted/60 px-2 py-0.5 rounded-full">
+              <span className="font-semibold text-foreground bg-muted/60 px-2 py-0.5 rounded-md">
                 {item.funding}
               </span>
             </div>

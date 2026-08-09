@@ -61,7 +61,7 @@ export function OpenSourceShowcase() {
                 </div>
                 <Badge
                   variant="outline"
-                  className="rounded-full px-2 py-0.5 text-[10px] font-mono shrink-0"
+                  className="rounded-md px-2 py-0.5 text-[10px] font-mono shrink-0"
                 >
                   {repo.language}
                 </Badge>
@@ -84,7 +84,7 @@ export function OpenSourceShowcase() {
                   {repo.forks}
                 </span>
               </div>
-              <span className="text-[10px] font-medium text-foreground bg-muted px-2 py-0.5 rounded-full flex items-center gap-1">
+              <span className="text-[10px] font-medium text-foreground bg-muted px-2 py-0.5 rounded-md flex items-center gap-1">
                 <ShieldCheck className="h-3 w-3 text-secondary" />{" "}
                 {repo.maintainer}
               </span>

@@ -100,7 +100,7 @@ export function Navbar() {
                 <SheetHeader className="text-left border-b border-border/50 pb-4 mb-5">
                   <SheetTitle className="flex items-center justify-between">
                     <BrandLogo size="md" />
-                    <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-[10px] font-semibold text-primary">
+                    <span className="inline-flex items-center gap-1 rounded-md bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-[10px] font-semibold text-primary">
                       <Sparkles className="h-3 w-3" /> Bengal Tech
                     </span>
                   </SheetTitle>
@@ -158,7 +158,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     buttonVariants({ size: "default" }),
-                    "w-full rounded-full py-3 font-semibold text-xs shadow-md transition-all gap-2 flex items-center justify-center",
+                    "w-full rounded-xl py-3 font-semibold text-xs shadow-md transition-all gap-2 flex items-center justify-center",
                   )}
                 >
                   <Plus className="h-4 w-4" />

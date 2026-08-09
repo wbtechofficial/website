@@ -28,7 +28,7 @@ export function NewsletterCard() {
           
           {/* Left Column: Heading & Description */}
           <div className="lg:col-span-7 space-y-3">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">
+            <div className="inline-flex items-center gap-1.5 rounded-md border border-primary/20 bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" /> Weekly Ecosystem Digest
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
@@ -59,12 +59,12 @@ export function NewsletterCard() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your work email..."
-                    className="w-full rounded-full border border-border bg-background pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-xs"
+                    className="w-full rounded-xl border border-border bg-background pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-xs"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full sm:w-auto rounded-full px-6 py-3 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-1.5 shrink-0"
+                  className="w-full sm:w-auto rounded-xl px-6 py-3 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-1.5 shrink-0"
                 >
                   <span>Subscribe</span>
                   <ArrowRight className="h-4 w-4" />

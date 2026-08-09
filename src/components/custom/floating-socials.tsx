@@ -88,7 +88,7 @@ export function FloatingSocials({
         className
       )}
     >
-      <div className="flex flex-col gap-2.5 p-2 rounded-full border border-border/80 bg-card/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-lg shadow-black/10 dark:shadow-black/60 dark:border-zinc-800">
+      <div className="flex flex-col gap-2.5 p-2 rounded-2xl border border-border/80 bg-card/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-lg shadow-black/10 dark:shadow-black/60 dark:border-zinc-800">
         {items.map((item) => (
           <a
             key={item.id}
@@ -97,7 +97,7 @@ export function FloatingSocials({
             rel="noreferrer"
             aria-label={item.tooltip || item.name}
             className={cn(
-              "group relative flex items-center justify-center p-2.5 rounded-full border border-transparent bg-muted/40 dark:bg-zinc-900/80 transition-all duration-300 hover:scale-110 hover:bg-background dark:hover:bg-zinc-800 hover:shadow-md",
+              "group relative flex items-center justify-center p-2.5 rounded-xl border border-transparent bg-muted/40 dark:bg-zinc-900/80 transition-all duration-300 hover:scale-110 hover:bg-background dark:hover:bg-zinc-800 hover:shadow-md",
               item.color
             )}
           >

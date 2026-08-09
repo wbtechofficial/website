@@ -14,7 +14,7 @@ export function AnnouncementBanner() {
       <div className="container mx-auto max-w-7xl flex items-center justify-between gap-4">
         
         <div className="flex items-center gap-2 mx-auto sm:mx-0 truncate">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-0.5 text-[11px] font-semibold text-primary-foreground shadow-xs shrink-0">
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-primary px-2.5 py-0.5 text-[11px] font-semibold text-primary-foreground shadow-xs shrink-0">
             <Sparkles className="h-3 w-3" /> Event Announcement
           </span>
           <span className="truncate text-foreground font-medium">
@@ -30,7 +30,7 @@ export function AnnouncementBanner() {
 
         <button
           onClick={() => setIsVisible(false)}
-          className="text-muted-foreground hover:text-foreground p-1 rounded-full shrink-0 transition-colors"
+          className="text-muted-foreground hover:text-foreground p-1 rounded-md shrink-0 transition-colors"
           title="Dismiss banner"
         >
           <X className="h-3.5 w-3.5" />

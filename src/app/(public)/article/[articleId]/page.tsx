@@ -46,7 +46,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors group px-3 py-1.5 rounded-full border border-border/50 bg-card hover:bg-muted"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors group px-3 py-1.5 rounded-lg border border-border/50 bg-card hover:bg-muted"
           >
             <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
             <span>Back to Articles</span>
@@ -59,7 +59,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
           <div className="mb-4">
             <Badge
               variant="secondary"
-              className="rounded-full bg-primary/10 text-primary border border-primary/20 font-bold px-4 py-1 text-xs tracking-wide uppercase"
+              className="rounded-md bg-primary/10 text-primary border border-primary/20 font-bold px-4 py-1 text-xs tracking-wide uppercase"
             >
               {article.categoryLabel}
             </Badge>
@@ -124,7 +124,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
 
             {/* Author Info Card */}
             <div className="rounded-2xl border border-border/70 bg-card/60 p-6 backdrop-blur-sm shadow-xs flex items-center gap-4">
-              <div className="h-12 w-12 rounded-full bg-primary/10 text-primary font-extrabold text-sm flex items-center justify-center shrink-0 border border-primary/20">
+              <div className="h-12 w-12 rounded-lg bg-primary/10 text-primary font-extrabold text-sm flex items-center justify-center shrink-0 border border-primary/20">
                 {article.authorAvatarText}
               </div>
               <div>
@@ -147,7 +147,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-full border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
+                  className="p-2.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
                   title="Share on X (Twitter)"
                 >
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -158,7 +158,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                   href={`https://www.linkedin.com/sharing/share-offsite/`}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-full border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
+                  className="p-2.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
                   title="Share on LinkedIn"
                 >
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -166,7 +166,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                   </svg>
                 </a>
                 <button
-                  className="p-2.5 rounded-full border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
+                  className="p-2.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
                   title="Copy Article Link"
                 >
                   <Copy className="h-4 w-4" />
@@ -213,7 +213,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                   <Badge
                     key={tag}
                     variant="outline"
-                    className="rounded-full px-3 py-1 text-xs font-medium bg-muted/40"
+                    className="rounded-md px-3 py-1 text-xs font-medium bg-muted/40"
                   >
                     #{tag}
                   </Badge>
@@ -275,7 +275,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-3 left-3">
-                    <Badge className="rounded-full bg-background/90 text-foreground text-[10px] px-2.5 py-0.5 backdrop-blur-md">
+                    <Badge className="rounded-md bg-background/90 text-foreground text-[10px] px-2.5 py-0.5 backdrop-blur-md">
                       {rec.categoryLabel}
                     </Badge>
                   </div>

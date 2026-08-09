@@ -30,10 +30,10 @@ export function Footer() {
 
               {/* Community Location & Sponsorship Pill */}
               <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-medium">
-                <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-full border border-zinc-800">
+                <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-md border border-zinc-800">
                   <MapPin className="h-3 w-3 text-red-500" /> Sector V, Kolkata
                 </span>
-                <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-full border border-zinc-800">
+                <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-md border border-zinc-800">
                   <Sparkles className="h-3 w-3 text-purple-400" /> React Kolkata
                   Guild
                 </span>
