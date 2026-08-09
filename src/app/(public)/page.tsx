@@ -1,64 +1,22 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import { HeroSection } from "@/@module/home/components/hero-section";
-import { FeaturedGrid } from "@/@module/home/components/featured-grid";
-import { OpenSourceShowcase } from "@/@module/home/components/opensource-showcase";
+import { DefaultViewSections } from "@/@module/home/components/default-view-sections";
 import { FilterSection } from "@/components/custom/filter-section";
-import { CardGrid } from "@/@module/home/components/card-grid";
-import { MOCK_ITEMS } from "@/base/data/mock-data";
+import { FilteredCardGrid } from "@/@module/home/components/filtered-card-grid";
 
-export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredItems = useMemo(() => {
-    return MOCK_ITEMS.filter((item) => {
-      // Category filter match
-      const matchesCategory =
-        activeCategory === "all" || item.category === activeCategory;
-
-      // Search query match
-      const query = searchQuery.toLowerCase().trim();
-      const matchesSearch =
-        !query ||
-        item.title.toLowerCase().includes(query) ||
-        item.excerpt.toLowerCase().includes(query) ||
-        item.categoryLabel.toLowerCase().includes(query) ||
-        item.authorName.toLowerCase().includes(query);
-
-      return matchesCategory && matchesSearch;
-    });
-  }, [searchQuery, activeCategory]);
-
+export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <HeroSection
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
+      <HeroSection />
 
-      <main className="flex-1 space-y-2">
-        {/* Featured Stories Grid */}
-        {!searchQuery && activeCategory === "all" && <FeaturedGrid />}
+      {/* Conditional Default View Sections (Featured Grid & Open Source Repos) */}
+      <DefaultViewSections />
 
-        {/* Regional Open Source Repos Section */}
-        {!searchQuery && activeCategory === "all" && <OpenSourceShowcase />}
+      {/* Filter Toolbar (Search Input & Topic Category Pills) */}
+      <FilterSection />
 
-        {/* Filter Toolbar (Search & Category Pills) */}
-        <FilterSection
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-        />
-
-        {/* Dynamic Article Grid */}
-        <CardGrid items={filteredItems} />
-      </main>
+      {/* Dynamic Article Grid (Client Component receiving SSR initial data) */}
+      <FilteredCardGrid />
     </>
   );
 }

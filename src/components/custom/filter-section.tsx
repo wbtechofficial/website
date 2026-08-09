@@ -1,32 +1,20 @@
 "use client";
 
-import * as React from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  useActiveCategory,
+  useFilterActions,
+  useSearchQuery,
+} from "@/store/filter/use-filter-store";
+import { CATEGORIES } from "@/base/constants/filter-items";
 
-interface FilterSectionProps {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  activeCategory: string;
-  setActiveCategory: (category: string) => void;
-}
+export function FilterSection() {
+  const searchQuery = useSearchQuery();
+  const activeCategory = useActiveCategory();
+  const { setSearchQuery, setActiveCategory } = useFilterActions();
 
-const CATEGORIES = [
-  { id: "all", label: "All Topics" },
-  { id: "news", label: "Development News" },
-  { id: "startups", label: "Startups" },
-  { id: "opensource", label: "Open Source" },
-  { id: "meetups", label: "Meetups & Events" },
-  { id: "jobs", label: "Job Directory" },
-];
-
-export function FilterSection({
-  searchQuery,
-  setSearchQuery,
-  activeCategory,
-  setActiveCategory,
-}: FilterSectionProps) {
   return (
     <section
       id="updates"
@@ -54,7 +42,7 @@ export function FilterSection({
             placeholder="Search updates, startups..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 h-10 rounded-md bg-muted/40 focus-visible:bg-background transition-all"
+            className="pl-10 h-10 rounded-md bg-muted border-1 border-primary/10 focus-visible:bg-background transition-all"
           />
         </div>
 

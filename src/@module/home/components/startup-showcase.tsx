@@ -5,18 +5,6 @@ import { Rocket, ExternalLink, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { STARTUPS } from "@/base/data/startups-mock-data";
 
-export interface StartupItem {
-  id: string;
-  name: string;
-  tagline: string;
-  category: string;
-  location: string;
-  funding: string;
-  founded: string;
-  logoText: string;
-  link: string;
-}
-
 export function StartupShowcase() {
   return (
     <section className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 border-b border-border/40">

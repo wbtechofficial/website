@@ -1,37 +1,23 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Clock, Inbox, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-export interface CardItem {
-  id: string;
-  category: "news" | "startups" | "opensource" | "meetups" | "jobs";
-  categoryLabel: string;
-  title: string;
-  excerpt: string;
-  authorName: string;
-  authorAvatarText: string;
-  date: string;
-  link: string;
-  gradient: string;
-  imageUrl?: string;
-  readingTime?: string;
-}
+import { useEffect, useState } from "react";
+import { CardItem } from "@/base/data/mock-data";
 
 interface CardGridProps {
   items: CardItem[];
 }
 
 export function CardGrid({ items }: CardGridProps) {
-  const [visibleCount, setVisibleCount] = React.useState(6);
-  const [isLoadingMore, setIsLoadingMore] = React.useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Reset pagination when items change
-  React.useEffect(() => {
+  useEffect(() => {
     setVisibleCount(6);
   }, [items]);
 
@@ -54,7 +40,8 @@ export function CardGrid({ items }: CardGridProps) {
         </div>
         <h3 className="mt-4 text-lg font-bold">No articles found</h3>
         <p className="mt-2 text-sm text-muted-foreground max-w-xs mx-auto">
-          We couldn't find any results matching your search or category filter. Try clearing your search.
+          We couldn't find any results matching your search or category filter.
+          Try clearing your search.
         </p>
       </div>
     );
@@ -67,7 +54,11 @@ export function CardGrid({ items }: CardGridProps) {
         {visibleItems.map((item) => (
           <Link
             key={item.id}
-            href={item.link.startsWith("/article") ? item.link : `/article/${item.id}`}
+            href={
+              item.link.startsWith("/article")
+                ? item.link
+                : `/article/${item.id}`
+            }
             className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-card via-card to-primary/5 hover:from-card hover:via-card hover:to-primary/10 transition-all duration-300 hover:border-primary/70 hover:shadow-[0_0_20px_rgba(222,53,76,0.25)] dark:hover:shadow-[0_0_25px_rgba(222,53,76,0.4)]"
           >
             {/* Top Unsplash Image Header */}
@@ -81,7 +72,9 @@ export function CardGrid({ items }: CardGridProps) {
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               ) : (
-                <div className={`h-full w-full bg-gradient-to-tr ${item.gradient}`} />
+                <div
+                  className={`h-full w-full bg-gradient-to-tr ${item.gradient}`}
+                />
               )}
               {/* Overlay Gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
@@ -123,7 +116,9 @@ export function CardGrid({ items }: CardGridProps) {
                   <div className="h-7 w-7 rounded-md bg-primary/10 text-primary flex items-center justify-center text-[10px] font-extrabold border border-primary/20">
                     {item.authorAvatarText}
                   </div>
-                  <span className="font-semibold text-foreground text-xs">{item.authorName}</span>
+                  <span className="font-semibold text-foreground text-xs">
+                    {item.authorName}
+                  </span>
                 </div>
                 <span>{item.date}</span>
               </div>

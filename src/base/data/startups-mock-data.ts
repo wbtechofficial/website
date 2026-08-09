@@ -1,4 +1,14 @@
-import { StartupItem } from "@/@module/home/components/startup-showcase";
+export interface StartupItem {
+  id: string;
+  name: string;
+  tagline: string;
+  category: string;
+  location: string;
+  funding: string;
+  founded: string;
+  logoText: string;
+  link: string;
+}
 
 export const STARTUPS: StartupItem[] = [
   {

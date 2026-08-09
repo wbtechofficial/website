@@ -9,26 +9,15 @@ import {
   Terminal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  useActiveCategory,
+  useFilterStore,
+} from "@/store/filter/use-filter-store";
+import { quickFilterTags } from "@/base/constants/filter-items";
 
-interface HeroSectionProps {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  activeCategory: string;
-  setActiveCategory: (category: string) => void;
-}
-
-export function HeroSection({
-  activeCategory,
-  setActiveCategory,
-}: HeroSectionProps) {
-  const quickFilterTags = [
-    { label: "All Topics", value: "all" },
-    { label: "React & Web", value: "React" },
-    { label: "AI Startups", value: "startups" },
-    { label: "Open Source", value: "opensource" },
-    { label: "Dev Meetups", value: "meetups" },
-    { label: "Tech Jobs", value: "jobs" },
-  ];
+export function HeroSection() {
+  const activeCategory = useActiveCategory();
+  const setActiveCategory = useFilterStore((state) => state.setActiveCategory);
 
   const handleTagClick = (val: string) => {
     setActiveCategory(val);
@@ -79,7 +68,7 @@ export function HeroSection({
               <Button
                 onClick={scrollToFeed}
                 size="lg"
-                className="rounded-xl px-6 py-2.5 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group"
+                className="rounded-xl px-6 py-2.5 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group cursor-pointer"
               >
                 <span>Explore Articles</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -93,7 +82,7 @@ export function HeroSection({
                     <button
                       key={tag.label}
                       onClick={() => handleTagClick(tag.value)}
-                      className={`rounded-md px-3 py-1 text-xs font-normal transition-all ${
+                      className={`rounded-md px-3 py-1 text-xs font-normal transition-all cursor-pointer ${
                         isSelected
                           ? "bg-primary text-primary-foreground font-semibold shadow-xs"
                           : "bg-card border border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted"
