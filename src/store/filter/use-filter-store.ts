@@ -1,9 +1,10 @@
 import { useContext, useMemo } from "react";
 import { useStore } from "zustand";
+import { useShallow } from "zustand/react/shallow";
 import { FilterStoreContext } from "../providers/filter-store-provider";
 import { globalFilterStore } from "./filter-store";
 import { FilterStoreState } from "./filter-store.types";
-import { CardItem } from "@/@module/home/components/card-grid";
+import { CardItem } from "@/base/data/mock-data";
 
 export function useFilterStore<T>(selector: (state: FilterStoreState) => T): T {
   const storeContext = useContext(FilterStoreContext);
@@ -19,15 +20,20 @@ export const useActiveCategory = () =>
 
 export const useIsDefaultFilterView = () =>
   useFilterStore(
-    (state) => !state.searchQuery && state.activeCategory === "all",
+    (state) => !state.searchQuery && state.activeCategory === "all"
   );
 
+/**
+ * Hook to obtain store mutation actions using useShallow to prevent infinite re-render loops
+ */
 export const useFilterActions = () =>
-  useFilterStore((state) => ({
-    setSearchQuery: state.setSearchQuery,
-    setActiveCategory: state.setActiveCategory,
-    resetFilters: state.resetFilters,
-  }));
+  useFilterStore(
+    useShallow((state) => ({
+      setSearchQuery: state.setSearchQuery,
+      setActiveCategory: state.setActiveCategory,
+      resetFilters: state.resetFilters,
+    }))
+  );
 
 export const useFilteredItems = (items: CardItem[]) => {
   const searchQuery = useSearchQuery();
