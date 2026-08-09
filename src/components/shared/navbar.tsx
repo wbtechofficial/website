@@ -70,7 +70,7 @@ export function Navbar() {
             href="/project-submissions"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "hidden sm:inline-flex rounded-full px-4 text-xs font-semibold shadow-xs hover:shadow-md transition-all gap-1.5",
+              "hidden sm:inline-flex rounded-md px-4 text-xs font-semibold shadow-xs hover:shadow-md transition-all gap-1.5",
             )}
           >
             <Plus className="h-3.5 w-3.5" />
@@ -79,7 +79,7 @@ export function Navbar() {
 
           {/* Mobile Drawer Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger render={<Button variant="outline">Open</Button>}>
+            <SheetTrigger>
               <Button
                 variant="ghost"
                 size="icon"
