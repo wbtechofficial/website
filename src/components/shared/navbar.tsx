@@ -47,18 +47,6 @@ export function Navbar() {
           {/* Theme Toggle (Desktop & Mobile header bar) */}
           <ThemeToggleDropdown />
 
-          {/* Desktop Submit Project CTA */}
-          <Link
-            href="/project-submissions"
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "hidden sm:inline-flex rounded-md px-4 text-xs font-semibold shadow-xs hover:shadow-md transition-all gap-1.5",
-            )}
-          >
-            <Plus className="h-3.5 w-3.5" />
-            <span>Submit Project</span>
-          </Link>
-
           {/* Mobile Drawer Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger
@@ -136,19 +124,6 @@ export function Navbar() {
 
               {/* Drawer Bottom Actions & Community Footer */}
               <div className="space-y-4 pt-6 border-t border-border/50">
-                {/* Submit Project CTA */}
-                <Link
-                  href="/project-submissions"
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    buttonVariants({ size: "default" }),
-                    "w-full rounded-xl py-3 font-semibold text-xs shadow-md transition-all gap-2 flex items-center justify-center",
-                  )}
-                >
-                  <Plus className="h-4 w-4" />
-                  <span>Submit Project / Story</span>
-                </Link>
-
                 {/* Community Metadata Note */}
                 <div className="rounded-xl border border-border/60 bg-muted/30 p-3 text-center">
                   <p className="text-[11px] font-mono text-muted-foreground flex items-center justify-center gap-1">
