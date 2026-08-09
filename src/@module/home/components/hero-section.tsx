@@ -42,7 +42,7 @@ export function HeroSection({
   };
 
   return (
-    <section className="relative pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-16 lg:pb-16 border-b border-border/40 bg-background overflow-hidden">
+    <section className="relative pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-16 lg:pb-16 border-b border-border/40 overflow-hidden">
       {/* Ambient Subtle Accent Blur */}
       <div className="pointer-events-none absolute top-0 left-1/4 -z-10 h-72 w-[500px] rounded-full bg-primary/5 blur-[100px]" />
 
