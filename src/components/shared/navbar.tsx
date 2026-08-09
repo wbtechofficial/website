@@ -40,7 +40,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 transition-colors">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 transition-colors">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo & Desktop Nav Links */}
         <div className="flex items-center gap-8">
@@ -79,16 +79,18 @@ export function Navbar() {
 
           {/* Mobile Drawer Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden h-9 w-9 rounded-xl border border-border/60 bg-muted/30 text-foreground hover:bg-muted"
-                aria-label="Open mobile navigation menu"
-              >
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden h-9 w-9 rounded-xl border border-border/60 bg-muted/30 text-foreground hover:bg-muted"
+                  aria-label="Open mobile navigation menu"
+                >
+                  <Menu className="h-5 w-5" />
+                </Button>
+              }
+            />
 
             {/* Mobile Navigation Drawer Content */}
             <SheetContent
