@@ -6,10 +6,10 @@ import { MapPin, Heart, Sparkles } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-b from-zinc-950 via-black to-zinc-950 border-t border-zinc-900/90 text-zinc-300 mt-16 transition-colors">
+    <footer className="w-full bg-gradient-to-b from-navy via-[#051633] to-navy border-t border-white/10 text-ice/80 mt-16 transition-colors">
       <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-zinc-900/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-white/10">
           {/* Brand & Community Details (Spans 2 columns on desktop) */}
           <div className="lg:col-span-2 flex flex-col justify-between space-y-4">
             <div>
@@ -22,7 +22,7 @@ export function Footer() {
                 />
               </Link>
 
-              <p className="mt-4 text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm font-normal">
+              <p className="mt-4 text-xs sm:text-sm text-ice/60 leading-relaxed max-w-sm font-normal">
                 An open digital community unifying West Bengal's engineering
                 talent. Discover deep-tech startups, explore regional
                 open-source projects, and connect with technology opportunities.
@@ -30,11 +30,11 @@ export function Footer() {
 
               {/* Community Location & Sponsorship Pill */}
               <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-medium">
-                <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-md border border-zinc-800">
-                  <MapPin className="h-3 w-3 text-red-500" /> Sector V, Kolkata
+                <span className="inline-flex items-center gap-1 bg-white/5 text-ice/80 px-2.5 py-1 rounded-md border border-white/10">
+                  <MapPin className="h-3 w-3 text-primary" /> Sector V, Kolkata
                 </span>
-                <span className="inline-flex items-center gap-1 bg-zinc-900 text-zinc-300 px-2.5 py-1 rounded-md border border-zinc-800">
-                  <Sparkles className="h-3 w-3 text-purple-400" /> React Kolkata
+                <span className="inline-flex items-center gap-1 bg-white/5 text-ice/80 px-2.5 py-1 rounded-md border border-white/10">
+                  <Sparkles className="h-3 w-3 text-coral" /> React Kolkata
                   Guild
                 </span>
               </div>
@@ -46,7 +46,7 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">
               Ecosystem
             </h4>
-            <ul className="space-y-2.5 text-xs font-medium text-zinc-400">
+            <ul className="space-y-2.5 text-xs font-medium text-ice/60">
               <li>
                 <Link
                   href="#featured-feed"
@@ -87,7 +87,7 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">
               Community
             </h4>
-            <ul className="space-y-2.5 text-xs font-medium text-zinc-400">
+            <ul className="space-y-2.5 text-xs font-medium text-ice/60">
               <li>
                 <Link
                   href="/project-submissions"
@@ -132,7 +132,7 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">
               Legal & Meta
             </h4>
-            <ul className="space-y-2.5 text-xs font-medium text-zinc-400">
+            <ul className="space-y-2.5 text-xs font-medium text-ice/60">
               <li>
                 <Link href="#" className="hover:text-white transition-colors">
                   Privacy Policy
@@ -166,20 +166,19 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom Metadata */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-normal">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ice/50 font-normal">
           <p>
             © {new Date().getFullYear()} west-bengal.tech initiative. Built for
             the developer community.
           </p>
           <p className="flex items-center gap-1">
             Crafted with{" "}
-            <Heart className="h-3.5 w-3.5 fill-red-500 text-red-500 inline" />{" "}
-            by{" "}
+            <Heart className="h-3.5 w-3.5 fill-coral text-coral inline" /> by{" "}
             <a
               href="https://github.com/reactkolkata"
               target="_blank"
               rel="noreferrer"
-              className="text-zinc-300 font-medium hover:text-white underline"
+              className="text-ice/80 font-medium hover:text-white underline"
             >
               React Kolkata Team
             </a>

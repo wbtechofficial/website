@@ -30,7 +30,7 @@ export function FeaturedGrid() {
         {/* Main Featured Card - Left (Spans 7 columns on desktop) */}
         <Link
           href={`/article/${mainArticle.id}`}
-          className="group relative overflow-hidden rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between min-h-[460px] sm:min-h-[520px] transition-all duration-300 hover:border-primary/80 hover:shadow-[0_0_30px_rgba(222,53,76,0.3)] dark:hover:shadow-[0_0_35px_rgba(222,53,76,0.45)] lg:col-span-7"
+          className="group relative overflow-hidden rounded-3xl border border-border/80 bg-card p-6 sm:p-8 flex flex-col justify-between min-h-[460px] sm:min-h-[520px] transition-all duration-300 hover:border-primary/80 hover:shadow-[0_0_30px_rgba(11,160,156,0.3)] dark:hover:shadow-[0_0_35px_rgba(11,160,156,0.45)] lg:col-span-7"
         >
           {/* High Quality Unsplash Background Image */}
           <div className="absolute inset-0 z-0 overflow-hidden">
@@ -111,7 +111,7 @@ export function FeaturedGrid() {
             <Link
               key={article.id}
               href={`/article/${article.id}`}
-              className="group relative flex flex-1 flex-row items-center gap-4 rounded-2xl border border-border/80 bg-card p-4 transition-all duration-300 hover:border-primary/70 hover:bg-muted/40 dark:hover:bg-card/90 hover:shadow-[0_0_18px_rgba(222,53,76,0.2)] dark:hover:shadow-[0_0_20px_rgba(222,53,76,0.35)]"
+              className="group relative flex flex-1 flex-row items-center gap-4 rounded-2xl border border-border/80 bg-card p-4 transition-all duration-300 hover:border-primary/70 hover:bg-muted/40 dark:hover:bg-card/90 hover:shadow-[0_0_18px_rgba(11,160,156,0.2)] dark:hover:shadow-[0_0_20px_rgba(11,160,156,0.35)]"
             >
               {/* Left Thumbnail Image */}
               <div className="relative h-24 w-28 sm:w-32 shrink-0 overflow-hidden rounded-xl bg-muted border border-border/50">

@@ -43,7 +43,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "17 Jan 2026",
     readingTime: "5 min read",
     link: "/article/news-1",
-    gradient: "from-violet-600 via-indigo-600 to-purple-800",
+    gradient: "from-navy via-teal to-navy",
     isFeatured: true,
     tags: ["React", "Community", "WestBengalTech", "OpenSource"],
     toc: [
@@ -107,7 +107,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "17 Jan 2026",
     readingTime: "4 min read",
     link: "/article/meetup-1",
-    gradient: "from-amber-500 to-orange-600",
+    gradient: "from-coral to-navy",
     tags: ["React 19", "Meetup", "WebDev", "Kolkata"],
     toc: [
       { id: "agenda", title: "Event Agenda & Talk Lineup" },
@@ -155,7 +155,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "15 Jan 2026",
     readingTime: "6 min read",
     link: "/article/startup-1",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-teal to-navy",
     tags: ["AI", "LLM", "Startups", "Funding"],
     toc: [
       { id: "funding", title: "The Funding Milestone" },
@@ -203,7 +203,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "12 Jan 2026",
     readingTime: "4 min read",
     link: "/article/opensource-1",
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-navy via-coral to-navy",
     tags: ["React", "UI", "OpenSource", "GitHub"],
     toc: [
       { id: "overview", title: "What is DevStudio?" },
@@ -252,7 +252,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "10 Jan 2026",
     readingTime: "3 min read",
     link: "/article/job-1",
-    gradient: "from-cyan-500 to-sky-600",
+    gradient: "from-teal via-ice to-navy",
     tags: ["Jobs", "Frontend", "TypeScript", "React"],
     toc: [
       { id: "role", title: "Role Description" },
@@ -301,7 +301,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "08 Jan 2026",
     readingTime: "3 min read",
     link: "/article/meetup-2",
-    gradient: "from-amber-500 to-orange-600",
+    gradient: "from-coral via-navy to-teal",
     tags: ["JavaScript", "Conference", "CFP", "Kolkata"],
     toc: [
       { id: "about", title: "About KolkataJS Conf" },
@@ -340,7 +340,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
     date: "05 Jan 2026",
     readingTime: "4 min read",
     link: "/article/news-2",
-    gradient: "from-zinc-500 to-slate-600",
+    gradient: "from-navy to-teal",
     tags: ["Infrastructure", "SectorV", "TechPark"],
     toc: [
       { id: "details", title: "Infrastructure Details" },

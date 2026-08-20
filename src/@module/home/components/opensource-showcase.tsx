@@ -22,7 +22,7 @@ export function OpenSourceShowcase() {
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary dark:text-primary mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary mb-2">
             <Code2 className="h-3.5 w-3.5" /> Public Infrastructure
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
@@ -36,7 +36,7 @@ export function OpenSourceShowcase() {
 
         <Link
           href="#updates"
-          className="inline-flex items-center gap-1 text-xs font-bold text-secondary dark:text-primary hover:underline self-start sm:self-auto shrink-0"
+          className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline self-start sm:self-auto shrink-0"
         >
           Explore repositories <ExternalLink className="h-3.5 w-3.5" />
         </Link>
@@ -48,14 +48,14 @@ export function OpenSourceShowcase() {
           <Link
             key={repo.id}
             href={repo.link}
-            className="group flex flex-col justify-between rounded-2xl border border-border/80 bg-gradient-to-br from-card via-card to-secondary/5 hover:from-card hover:via-card hover:to-secondary/10 p-5 shadow-xs transition-all duration-300 hover:border-secondary/70 hover:shadow-[0_0_20px_rgba(60,24,116,0.2)]"
+            className="group flex flex-col justify-between rounded-2xl border border-border/80 bg-gradient-to-br from-card via-card to-primary/5 hover:from-card hover:via-card hover:to-primary/10 p-5 shadow-xs transition-all duration-300 hover:border-primary/70 hover:shadow-[0_0_20px_rgba(11,160,156,0.2)]"
           >
             <div>
               {/* Title & Badge */}
               <div className="flex items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-2">
-                  <Code2 className="h-4 w-4 text-secondary shrink-0" />
-                  <h3 className="font-mono text-sm font-bold text-foreground group-hover:text-secondary transition-colors truncate max-w-[180px]">
+                  <Code2 className="h-4 w-4 text-primary shrink-0" />
+                  <h3 className="font-mono text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate max-w-[180px]">
                     {repo.name}
                   </h3>
                 </div>

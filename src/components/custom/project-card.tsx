@@ -96,7 +96,7 @@ export function ProjectCard({
     return (
       <article
         className={cn(
-          "group relative flex flex-col sm:flex-row items-stretch overflow-hidden rounded-2xl border border-border/70 bg-card p-3.5 sm:p-4 shadow-xs hover:shadow-lg hover:border-primary/50 transition-all duration-300 gap-4 sm:gap-5 dark:hover:shadow-[0_0_25px_rgba(222,53,76,0.2)]",
+          "group relative flex flex-col sm:flex-row items-stretch overflow-hidden rounded-2xl border border-border/70 bg-card p-3.5 sm:p-4 shadow-xs hover:shadow-lg hover:border-primary/50 transition-all duration-300 gap-4 sm:gap-5 dark:hover:shadow-[0_0_25px_rgba(11,160,156,0.2)]",
           className
         )}
       >
@@ -244,7 +244,7 @@ export function ProjectCard({
   return (
     <article
       className={cn(
-        "group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-card p-4 shadow-xs hover:shadow-lg hover:border-primary/50 transition-all duration-300 dark:hover:shadow-[0_0_25px_rgba(222,53,76,0.2)]",
+        "group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-card p-4 shadow-xs hover:shadow-lg hover:border-primary/50 transition-all duration-300 dark:hover:shadow-[0_0_25px_rgba(11,160,156,0.2)]",
         className
       )}
     >

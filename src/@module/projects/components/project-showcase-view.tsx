@@ -263,7 +263,7 @@ export function ProjectShowcaseView({
                 </span>
               )}
               {selectedTag && (
-                <span className="rounded-md bg-secondary/10 text-secondary dark:text-primary border border-secondary/20 px-2 py-0.5 text-[10px] font-semibold">
+                <span className="rounded-md bg-coral/10 text-coral border border-coral/20 px-2 py-0.5 text-[10px] font-semibold">
                   #{selectedTag}
                 </span>
               )}

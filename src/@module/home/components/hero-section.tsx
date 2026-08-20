@@ -112,8 +112,8 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-xs flex items-center gap-3.5 hover:border-secondary/50 transition-colors">
-              <div className="h-10 w-10 rounded-xl bg-secondary/10 dark:bg-blue-600/10 text-secondary dark:text-blue-600 flex items-center justify-center shrink-0 border border-secondary/20">
+            <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-xs flex items-center gap-3.5 hover:border-coral/50 transition-colors">
+              <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shrink-0 border border-coral/20">
                 <Code2 className="h-5 w-5" />
               </div>
               <div>
@@ -140,8 +140,8 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-xs flex items-center gap-3.5 hover:border-secondary/50 transition-colors">
-              <div className="h-10 w-10 rounded-xl bg-secondary/10 dark:bg-blue-600/10 text-secondary dark:text-blue-600 flex items-center justify-center shrink-0 border border-secondary/20">
+            <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-xs flex items-center gap-3.5 hover:border-coral/50 transition-colors">
+              <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral flex items-center justify-center shrink-0 border border-coral/20">
                 <Briefcase className="h-5 w-5" />
               </div>
               <div>

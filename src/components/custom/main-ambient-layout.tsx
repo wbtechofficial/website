@@ -6,13 +6,8 @@ interface MainAmbientLayoutProps {
 }
 
 /**
- * MainAmbientLayout Component
- * Creates an ambient, multi-layered background glow utilizing West Bengal Tech brand palette:
- * - Crimson Red (#DE354C)
- * - Royal Violet (#3C1874)
- * - Deep Burgundy (#932432)
- * - Slate Charcoal (#283747)
- * - Soft Off-White (#F3F3F3) / Dark Slate (#1c2631)
+ * Ambient multi-layer glow using the west-bengal.tech brand palette:
+ * Navy #072049 · Teal #0BA09C · Coral #FF6B4A · Ice #F4F7FB
  */
 export function MainAmbientLayout({
   className,
@@ -25,35 +20,32 @@ export function MainAmbientLayout({
         className,
       )}
     >
-      {/* Light Mode Radial Brand Glow Overlay */}
       <div
         className="pointer-events-none fixed inset-0 z-0 opacity-80 dark:opacity-0 transition-opacity duration-500"
         style={{
           background: `
-            radial-gradient(ellipse 85% 65% at 8% 8%, rgba(222, 53, 76, 0.12), transparent 60%),
-            radial-gradient(ellipse 75% 60% at 75% 35%, rgba(60, 24, 116, 0.14), transparent 62%),
-            radial-gradient(ellipse 70% 60% at 15% 80%, rgba(147, 36, 50, 0.08), transparent 62%),
-            radial-gradient(ellipse 70% 60% at 92% 92%, rgba(222, 53, 76, 0.10), transparent 62%),
-            linear-gradient(180deg, #F3F3F3 0%, #E9ECEF 100%)
+            radial-gradient(ellipse 85% 65% at 8% 8%, rgba(11, 160, 156, 0.14), transparent 60%),
+            radial-gradient(ellipse 75% 60% at 75% 35%, rgba(7, 32, 73, 0.10), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 15% 80%, rgba(255, 107, 74, 0.08), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 92% 92%, rgba(11, 160, 156, 0.10), transparent 62%),
+            linear-gradient(180deg, #F4F7FB 0%, #E8EEF6 100%)
           `,
         }}
       />
 
-      {/* Dark Mode Radial Brand Glow Overlay */}
       <div
         className="pointer-events-none fixed inset-0 z-0 opacity-0 dark:opacity-90 transition-opacity duration-500"
         style={{
           background: `
-            radial-gradient(ellipse 85% 65% at 8% 8%, rgba(222, 53, 76, 0.20), transparent 60%),
-            radial-gradient(ellipse 75% 60% at 75% 35%, rgba(60, 24, 116, 0.32), transparent 62%),
-            radial-gradient(ellipse 70% 60% at 15% 80%, rgba(147, 36, 50, 0.20), transparent 62%),
-            radial-gradient(ellipse 70% 60% at 92% 92%, rgba(40, 55, 71, 0.45), transparent 62%),
-            linear-gradient(180deg, #1c2631 0%, #121921 100%)
+            radial-gradient(ellipse 85% 65% at 8% 8%, rgba(11, 160, 156, 0.22), transparent 60%),
+            radial-gradient(ellipse 75% 60% at 75% 35%, rgba(255, 107, 74, 0.12), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 15% 80%, rgba(11, 160, 156, 0.16), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 92% 92%, rgba(12, 45, 92, 0.55), transparent 62%),
+            linear-gradient(180deg, #072049 0%, #051633 100%)
           `,
         }}
       />
 
-      {/* Main Page Content Wrapper */}
       <div className="relative z-10 w-full min-h-screen flex flex-col">
         {children}
       </div>
