@@ -10,13 +10,13 @@ export default async function Home() {
       <HeroSection />
 
       {/* Conditional Default View Sections (Featured Grid & Open Source Repos) */}
-      <DefaultViewSections />
+      {/* <DefaultViewSections /> */}
 
       {/* Filter Toolbar (Search Input & Topic Category Pills) */}
-      <FilterSection />
+      {/* <FilterSection /> */}
 
       {/* Dynamic Article Grid (Client Component receiving SSR initial data) */}
-      <FilteredCardGrid />
+      {/* <FilteredCardGrid /> */}
     </>
   );
 }
