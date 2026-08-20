@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   ArrowRight,
   Code2,
@@ -9,25 +10,20 @@ import {
   Terminal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  useActiveCategory,
-  useFilterStore,
-} from "@/store/filter/use-filter-store";
-import { quickFilterTags } from "@/base/constants/filter-items";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { OnboardingForm } from "@/@module/home/components/onboarding-form";
 
 export function HeroSection() {
-  const activeCategory = useActiveCategory();
-  const setActiveCategory = useFilterStore((state) => state.setActiveCategory);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleTagClick = (val: string) => {
-    setActiveCategory(val);
-  };
-
-  const scrollToFeed = () => {
-    const featuredEl = document.getElementById("featured-feed");
-    if (featuredEl) {
-      featuredEl.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleJoinCommunity = (data: any) => {
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsOpen(false);
+      alert(`Welcome to the community, ${data.name}!`);
+    }, 1500);
   };
 
   return (
@@ -63,36 +59,15 @@ export function HeroSection() {
               Bengal.
             </p>
 
-            {/* CTA & Tag Switcher */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Button
-                onClick={scrollToFeed}
+                onClick={() => setIsOpen(true)}
                 size="lg"
-                className="rounded-xl px-6 py-2.5 font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group cursor-pointer"
+                className="rounded-xl px-6 py-2.5 font-semibold text-white text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group cursor-pointer"
               >
-                <span>Explore Articles</span>
+                <span>Join the Community</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
-
-              {/* Tag Quick Filter Buttons */}
-              <div className="flex flex-wrap items-center gap-1.5">
-                {quickFilterTags.map((tag) => {
-                  const isSelected = activeCategory === tag.value;
-                  return (
-                    <button
-                      key={tag.label}
-                      onClick={() => handleTagClick(tag.value)}
-                      className={`rounded-md px-3 py-1 text-xs font-normal transition-all cursor-pointer ${
-                        isSelected
-                          ? "bg-primary text-primary-foreground font-semibold shadow-xs"
-                          : "bg-card border border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted"
-                      }`}
-                    >
-                      {tag.label}
-                    </button>
-                  );
-                })}
-              </div>
             </div>
           </div>
 
@@ -156,6 +131,23 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Profile Onboarding Modal Popup */}
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent
+          showCloseButton={false}
+          className="p-0 border-0 bg-transparent ring-0 shadow-none max-w-md rounded-3xl overflow-hidden"
+        >
+          <OnboardingForm
+            imageSrc="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80"
+            title="Join the west-bengal.tech Network"
+            description="Create your profile to connect with regional engineers, startups, and career roles."
+            buttonText="Submit Profile"
+            onSubmit={handleJoinCommunity}
+            isSubmitting={isSubmitting}
+          />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
