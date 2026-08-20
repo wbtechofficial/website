@@ -27,7 +27,6 @@ interface OnboardingFormProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "onSubmit"
 > {
-  imageSrc: string;
   title: string;
   description: string;
   buttonText: string;
@@ -35,11 +34,13 @@ interface OnboardingFormProps extends Omit<
   isSubmitting?: boolean;
 }
 
+const onboardingFormCoverImage =
+  "https://images.unsplash.com/photo-1758270705317-3ef6142d306f?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
 export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
   (
     {
       className,
-      imageSrc,
       title,
       description,
       buttonText,
@@ -78,7 +79,7 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
         {/* Decorative top image */}
         <div className="relative h-24 w-full overflow-hidden shrink-0">
           <img
-            src={imageSrc}
+            src={onboardingFormCoverImage}
             alt="Welcome Banner"
             className="h-full w-full object-cover"
           />

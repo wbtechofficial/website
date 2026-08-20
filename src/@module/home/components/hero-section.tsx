@@ -12,18 +12,32 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { OnboardingForm } from "@/@module/home/components/onboarding-form";
+import { onboardingService } from "@/@module/home/services/onboarding";
+import { toast } from "@/components/ui/toast";
 
 export function HeroSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleJoinCommunity = (data: any) => {
+  const handleJoinCommunity = async (data: any) => {
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await onboardingService.submit(data);
+      toast.add({
+        title: "Profile Created!",
+        description: `Welcome to the community, ${data.name}!`,
+        type: "success",
+      });
       setIsOpen(false);
-      alert(`Welcome to the community, ${data.name}!`);
-    }, 1500);
+    } catch (error: any) {
+      toast.add({
+        title: "Registration Failed",
+        description: error.message || "Please check your inputs and try again.",
+        type: "error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -139,7 +153,6 @@ export function HeroSection() {
           className="p-0 border-0 bg-transparent ring-0 shadow-none max-w-md rounded-3xl overflow-hidden"
         >
           <OnboardingForm
-            imageSrc="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80"
             title="Join the west-bengal.tech Network"
             description="Create your profile to connect with regional engineers, startups, and career roles."
             buttonText="Submit Profile"
