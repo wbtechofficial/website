@@ -1,10 +1,12 @@
-import { Home as HomeIcon, FileText, Rocket, Code2, Briefcase, Sparkles } from "lucide-react";
+import { Home as HomeIcon, Code2, Rocket, Building2, Users, Calendar, GraduationCap, Sparkles } from "lucide-react";
 
 export const NAVIGATION_ITEMS = [
     { label: "Home", href: "/", icon: HomeIcon },
-    { label: "Showcase", href: "/project-showcase", icon: Sparkles },
-    { label: "Articles", href: "/#featured-feed", icon: FileText },
+    { label: "Developers", href: "/#developers", icon: Code2 },
     { label: "Startups", href: "/#startups", icon: Rocket },
-    { label: "Open Source", href: "/#opensource", icon: Code2 },
-    { label: "Jobs", href: "/#updates", icon: Briefcase },
+    { label: "Companies", href: "/#companies", icon: Building2 },
+    { label: "Communities", href: "/#communities", icon: Users },
+    { label: "Events", href: "/#events", icon: Calendar },
+    { label: "Students", href: "/#students", icon: GraduationCap },
+    { label: "Showcase", href: "/project-showcase", icon: Sparkles },
 ];
