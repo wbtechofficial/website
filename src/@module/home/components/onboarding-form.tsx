@@ -1,12 +1,16 @@
 import { forwardRef } from "react";
-import { Loader2, User, Mail, Phone, Briefcase, GraduationCap } from "lucide-react";
+import { User, Mail, Phone, Briefcase, GraduationCap } from "lucide-react";
 import { useForm } from "@tanstack/react-form";
-import { cn } from "@/lib/utils";
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Field, FieldLabel, FieldError, FieldGroup } from "@/components/ui/field";
 import { OnboardingFormData, onboardingFormSchema } from "../schemas/onboarding.schema";
+import { cn } from "@/lib/utils";
+import { FieldGroup } from "@/components/ui/field";
+import FormBanner from "@/components/custom/form/form-banner";
+import FormHeader from "@/components/custom/form/form-header";
+import FormSubmitButton from "@/components/custom/form/form-submit-button";
+import IconFormInputField from "@/components/custom/form/form-input-field-with-icon";
+import FormToggleInputField, {
+    ToggleOption,
+} from "@/components/custom/form/form-toggle-input-field";
 
 interface OnboardingFormProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSubmit"> {
     title: string;
@@ -39,6 +43,12 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
             },
         });
 
+        const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            e.stopPropagation();
+            form.handleSubmit();
+        };
+
         return (
             <div
                 className={cn(
@@ -48,204 +58,106 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
                 ref={ref}
                 {...props}
             >
-                {/* Decorative top image */}
-                <div className="relative h-20 w-full overflow-hidden shrink-0">
-                    <img
-                        src={onboardingFormCoverImage}
-                        alt="Welcome Banner"
-                        className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
-                </div>
+                <FormBanner src={onboardingFormCoverImage} alt="Welcome Banner" />
 
                 <div className="space-y-4 p-5 sm:p-6">
-                    {/* Main title and description */}
-                    <div className="space-y-1 text-center">
-                        <h3 className="font-heading font-bold text-lg sm:text-xl text-foreground leading-tight tracking-tight">
-                            {title}
-                        </h3>
-                        <p className="text-muted-foreground text-xs sm:text-sm leading-snug">
-                            {description}
-                        </p>
-                    </div>
+                    <FormHeader title={title} description={description} />
 
-                    <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            form.handleSubmit();
-                        }}
-                        className="space-y-3"
-                    >
+                    <form onSubmit={handleFormSubmit} className="space-y-3">
                         <FieldGroup>
                             {/* Name Field */}
                             <form.Field
                                 name="name"
-                                children={(field) => {
-                                    const isInvalid =
-                                        field.state.meta.isTouched && !field.state.meta.isValid;
-                                    return (
-                                        <Field data-invalid={isInvalid}>
-                                            <FieldLabel htmlFor={field.name}>Full Name</FieldLabel>
-                                            <div className="relative">
-                                                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                                <Input
-                                                    id={field.name}
-                                                    name={field.name}
-                                                    value={field.state.value}
-                                                    onBlur={field.handleBlur}
-                                                    onChange={(e) =>
-                                                        field.handleChange(e.target.value)
-                                                    }
-                                                    aria-invalid={isInvalid}
-                                                    type="text"
-                                                    placeholder="Enter your name"
-                                                    className="pl-10 h-10 rounded-xl bg-muted/20 focus:bg-background transition-all"
-                                                    autoComplete="off"
-                                                />
-                                            </div>
-                                            {isInvalid && (
-                                                <FieldError errors={field.state.meta.errors} />
-                                            )}
-                                        </Field>
-                                    );
-                                }}
+                                children={(field) => (
+                                    <IconFormInputField
+                                        icon={<User className="h-4 w-4" />}
+                                        label="Full Name"
+                                        fieldName={field.name}
+                                        type="text"
+                                        placeholder="Enter your name"
+                                        value={field.state.value}
+                                        onChange={(val) => field.handleChange(val)}
+                                        onBlur={() => field.handleBlur()}
+                                        fieldState={field.state.meta}
+                                    />
+                                )}
                             />
 
                             {/* Email Field */}
                             <form.Field
                                 name="email"
-                                children={(field) => {
-                                    const isInvalid =
-                                        field.state.meta.isTouched && !field.state.meta.isValid;
-                                    return (
-                                        <Field data-invalid={isInvalid}>
-                                            <FieldLabel htmlFor={field.name}>
-                                                Email Address
-                                            </FieldLabel>
-                                            <div className="relative">
-                                                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                                <Input
-                                                    id={field.name}
-                                                    name={field.name}
-                                                    value={field.state.value}
-                                                    onBlur={field.handleBlur}
-                                                    onChange={(e) =>
-                                                        field.handleChange(e.target.value)
-                                                    }
-                                                    aria-invalid={isInvalid}
-                                                    type="email"
-                                                    placeholder="name@domain.com"
-                                                    className="pl-10 h-10 rounded-xl bg-muted/20 focus:bg-background transition-all"
-                                                    autoComplete="off"
-                                                />
-                                            </div>
-                                            {isInvalid && (
-                                                <FieldError errors={field.state.meta.errors} />
-                                            )}
-                                        </Field>
-                                    );
-                                }}
+                                children={(field) => (
+                                    <IconFormInputField
+                                        icon={<Mail className="h-4 w-4" />}
+                                        label="Email Address"
+                                        fieldName={field.name}
+                                        type="email"
+                                        placeholder="name@domain.com"
+                                        value={field.state.value}
+                                        onChange={(val) => field.handleChange(val)}
+                                        onBlur={() => field.handleBlur()}
+                                        fieldState={field.state}
+                                    />
+                                )}
                             />
 
-                            {/* Contact Field */}
+                            {/* Contact Number Field */}
                             <form.Field
                                 name="contactNumber"
-                                children={(field) => {
-                                    const isInvalid =
-                                        field.state.meta.isTouched && !field.state.meta.isValid;
-                                    return (
-                                        <Field data-invalid={isInvalid}>
-                                            <FieldLabel htmlFor={field.name}>
-                                                Contact Number
-                                            </FieldLabel>
-                                            <div className="relative">
-                                                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                                <Input
-                                                    id={field.name}
-                                                    name={field.name}
-                                                    value={field.state.value}
-                                                    onBlur={field.handleBlur}
-                                                    onChange={(e) =>
-                                                        field.handleChange(e.target.value)
-                                                    }
-                                                    aria-invalid={isInvalid}
-                                                    type="tel"
-                                                    placeholder="10-digit mobile number"
-                                                    className="pl-10 h-10 rounded-xl bg-muted/20 focus:bg-background transition-all"
-                                                    required
-                                                    autoComplete="off"
-                                                />
-                                            </div>
-                                            {isInvalid && (
-                                                <FieldError errors={field.state.meta.errors} />
-                                            )}
-                                        </Field>
-                                    );
-                                }}
+                                children={(field) => (
+                                    <IconFormInputField
+                                        icon={<Phone className="h-4 w-4" />}
+                                        label="Contact Number"
+                                        fieldName={field.name}
+                                        type="tel"
+                                        placeholder="10-digit mobile number"
+                                        value={field.state.value}
+                                        onChange={(val) => field.handleChange(val)}
+                                        onBlur={() => field.handleBlur()}
+                                        fieldState={field.state}
+                                    />
+                                )}
                             />
 
-                            {/* Profession Select Toggle */}
+                            {/* Profession Toggle Field */}
                             <form.Field
                                 name="profession"
-                                children={(field) => {
-                                    const isInvalid =
-                                        field.state.meta.isTouched && !field.state.meta.isValid;
-                                    return (
-                                        <Field data-invalid={isInvalid}>
-                                            <FieldLabel>Profession</FieldLabel>
-                                            <div className="flex gap-2">
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        field.handleChange("Working Professional")
-                                                    }
-                                                    className={cn(
-                                                        "flex-grow flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer select-none",
-                                                        field.state.value === "Working Professional"
-                                                            ? "bg-primary text-white border-transparent shadow-xs"
-                                                            : "bg-muted/30 text-muted-foreground border-border/60 hover:bg-muted/60",
-                                                    )}
-                                                >
-                                                    <Briefcase className="h-3.5 w-3.5" />
-                                                    <span>Professional</span>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => field.handleChange("Student")}
-                                                    className={cn(
-                                                        "flex-grow flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer select-none",
-                                                        field.state.value === "Student"
-                                                            ? "bg-primary text-white border-transparent shadow-xs"
-                                                            : "bg-muted/30 text-muted-foreground border-border/60 hover:bg-muted/60",
-                                                    )}
-                                                >
-                                                    <GraduationCap className="h-3.5 w-3.5" />
-                                                    <span>Student</span>
-                                                </button>
-                                            </div>
-                                            {isInvalid && (
-                                                <FieldError errors={field.state.meta.errors} />
-                                            )}
-                                        </Field>
-                                    );
-                                }}
+                                children={(field) => (
+                                    <FormToggleInputField
+                                        label="Profession"
+                                        options={[
+                                            {
+                                                label: "Professional",
+                                                value: "Working Professional" as ToggleOption,
+                                                icon: <Briefcase className="h-3.5 w-3.5" />,
+                                            },
+                                            {
+                                                label: "Student",
+                                                value: "Student" as ToggleOption,
+                                                icon: <GraduationCap className="h-3.5 w-3.5" />,
+                                            },
+                                        ]}
+                                        value={field.state.value}
+                                        onChange={(val) =>
+                                            field.handleChange(
+                                                val as "Working Professional" | "Student",
+                                            )
+                                        }
+                                        fieldState={field.state}
+                                    />
+                                )}
                             />
                         </FieldGroup>
 
+                        {/* Submit Button */}
                         <form.Subscribe
                             selector={(state) => [state.canSubmit, state.isSubmitting]}
                             children={([canSubmit, isSubmittingState]) => (
-                                <Button
-                                    type="submit"
-                                    className="w-full h-9 rounded-xl text-white font-semibold cursor-pointer shadow-sm hover:shadow-md transition-all"
-                                    disabled={!canSubmit || isSubmitting || isSubmittingState}
-                                >
-                                    {isSubmitting || isSubmittingState ? (
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                    ) : null}
-                                    {buttonText}
-                                </Button>
+                                <FormSubmitButton
+                                    label={buttonText}
+                                    isLoading={isSubmitting || isSubmittingState}
+                                    isDisabled={!canSubmit || isSubmitting || isSubmittingState}
+                                />
                             )}
                         />
                     </form>
