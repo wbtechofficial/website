@@ -49,34 +49,50 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs font-medium text-ice/60">
               <li>
                 <Link
-                  href="#featured-feed"
+                  href="/#developers"
                   className="hover:text-white transition-colors"
                 >
-                  Featured Articles
+                  Developers
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#startups"
+                  href="/#startups"
                   className="hover:text-white transition-colors"
                 >
-                  Bengal Startups
+                  Startups
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#opensource"
+                  href="/#companies"
                   className="hover:text-white transition-colors"
                 >
-                  Open Source Repos
+                  Companies
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#updates"
+                  href="/#communities"
                   className="hover:text-white transition-colors"
                 >
-                  Job Directory
+                  Communities
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#events"
+                  className="hover:text-white transition-colors"
+                >
+                  Events
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#students"
+                  className="hover:text-white transition-colors"
+                >
+                  Students
                 </Link>
               </li>
             </ul>

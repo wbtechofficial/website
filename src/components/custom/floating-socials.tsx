@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
 import { SocialIcon, SocialIconName } from "@/components/custom/social-icon";
+import { cn } from "@/lib/utils";
+import * as React from "react";
 
 export interface SocialItem {
   id: string;
@@ -56,19 +56,19 @@ const DEFAULT_SOCIAL_ITEMS: SocialItem[] = [
   {
     id: "linkedin",
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/reactkolkata",
+    href: "https://www.linkedin.com/showcase/react-kolkata/",
     tooltip: "LinkedIn Network",
     iconName: "linkedin",
     color: "hover:border-blue-500/60 hover:shadow-[0_0_18px_rgba(10,102,194,0.5)] dark:hover:shadow-[0_0_20px_rgba(30,140,250,0.6)]",
   },
-  {
-    id: "facebook",
-    name: "Facebook",
-    href: "https://facebook.com/reactkolkata",
-    tooltip: "Facebook Community",
-    iconName: "facebook",
-    color: "hover:border-blue-600/60 hover:shadow-[0_0_18px_rgba(24,119,242,0.5)] dark:hover:shadow-[0_0_20px_rgba(50,140,255,0.6)]",
-  },
+  // {
+  //   id: "facebook",
+  //   name: "Facebook",
+  //   href: "https://facebook.com/reactkolkata",
+  //   tooltip: "Facebook Community",
+  //   iconName: "facebook",
+  //   color: "hover:border-blue-600/60 hover:shadow-[0_0_18px_rgba(24,119,242,0.5)] dark:hover:shadow-[0_0_20px_rgba(50,140,255,0.6)]",
+  // },
 ];
 
 export function FloatingSocials({
