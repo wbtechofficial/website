@@ -35,6 +35,7 @@ export function HeroSection() {
         description: error.message || "Please check your inputs and try again.",
         type: "error",
       });
+      setIsOpen(false);
     } finally {
       setIsSubmitting(false);
     }
@@ -150,7 +151,7 @@ export function HeroSection() {
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent
           showCloseButton={false}
-          className="p-0 border-0 bg-transparent ring-0 shadow-none max-w-md rounded-3xl overflow-hidden"
+          className="p-0 border-0 bg-transparent ring-0 shadow-none max-w-md rounded-3xl max-h-[calc(100dvh-2rem)] overflow-y-auto"
         >
           <OnboardingForm
             title="Join the west-bengal.tech Network"
