@@ -11,7 +11,7 @@ export const SITE_CONFIG = {
   description:
     "The primary open digital hub for software developers, tech startups, open-source projects, and engineering careers across Kolkata and West Bengal. Built for technologists who want to belong.",
   url: "https://westbengal.tech",
-  ogImage: "https://westbengal.tech/og-image.png", // OG Image Placeholder
+  ogImage: "https://westbengal.tech/images/og-image.png",
   twitterHandle: "@reactkolkata",
   publisher: "React Kolkata / West Bengal Tech Guild",
   
