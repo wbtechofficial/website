@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, Sparkles, MapPin, ChevronDown, ChevronRight } from "lucide-react";
 import { BrandLogo } from "@/components/custom/brand-logo";
 import { ThemeToggleDropdown } from "@/components/custom/theme-toggle-dropdown";
+import { SocialIcon } from "@/components/custom/social-icon";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -73,6 +74,18 @@ export function Navbar() {
 
                 {/* Action Buttons (Right) */}
                 <div className="flex items-center gap-2.5 sm:gap-3">
+                    {/* GitHub Link */}
+                    <a
+                        href="https://github.com/wbtechofficial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-foreground hover:bg-muted hover:text-primary transition-all duration-200 shadow-xs group"
+                        aria-label="GitHub Organization"
+                        title="GitHub Organization"
+                    >
+                        <SocialIcon name="github" size="sm" colorPopOnHover={false} />
+                    </a>
+
                     {/* Contact Us CTA (Desktop) */}
                     {/* <a
                         href="mailto:hello@westbengal.tech"
