@@ -15,7 +15,7 @@ export const COMMUNITIES: CommunityItem[] = [
     id: "comm-1",
     name: "React Kolkata",
     handle: "@reactkolkata",
-    description: "Core guild powering west-bengal.tech. Monthly meetups, open-source sprints & mentorship.",
+    description: "Core guild powering westbengal.tech. Monthly meetups, open-source sprints & mentorship.",
     members: "1,200+ members",
     focus: ["React 19", "Next.js", "Design Systems"],
     location: "Sector V, Kolkata",

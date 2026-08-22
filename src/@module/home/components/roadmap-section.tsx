@@ -19,7 +19,7 @@ const STEPS = [
     number: "02",
     title: "Join the network",
     description:
-      "Create your profile, showcase your skills and tech stack, connect with fellow builders, and take your place among fellow builders growing the west-bengal.tech community.",
+      "Create your profile, showcase your skills and tech stack, connect with fellow builders, and take your place among fellow builders growing the westbengal.tech community.",
     image: "/roadmap/join.jpg",
     imageAlt:
       "Community members greeting each other beside a verified profile card",
@@ -158,7 +158,7 @@ export default function RoadmapSection() {
         <header className={styles.header}>
           <div className={styles.kicker}>
             <span className={styles.kickerDot} aria-hidden="true" />
-            west-bengal.tech // the journey
+            westbengal.tech // the journey
           </div>
           <h2 id="roadmap-heading" className={styles.title}>
             Your Gateway to West Bengal&apos;s{" "}

@@ -15,7 +15,7 @@ export const STUDENT_PROGRAMS: StudentProgramItem[] = [
   {
     id: "student-1",
     title: "Campus Ambassador Program",
-    description: "Represent west-bengal.tech on your campus. Host workshops, grow your community.",
+    description: "Represent westbengal.tech on your campus. Host workshops, grow your community.",
     provider: "React Kolkata Guild",
     level: "For All Years",
     duration: "6 Months",

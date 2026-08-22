@@ -29,10 +29,10 @@ export interface ArticleItem {
 export const MOCK_ARTICLES: ArticleItem[] = [
   {
     id: "news-1",
-    slug: "react-kolkata-unveils-west-bengal-tech",
+    slug: "react-kolkata-unveils-westbengal-tech",
     category: "news",
     categoryLabel: "Ecosystem Initiative",
-    title: "React Kolkata Unveils the west-bengal.tech Initiative to Empower Local Developers",
+    title: "React Kolkata Unveils the westbengal.tech Initiative to Empower Local Developers",
     excerpt:
       "A community-driven digital hub crafted to showcase West Bengal's talent, spotlight local startups, drive open-source contributions, and host the definitive tech job directory.",
     imageUrl:
@@ -58,7 +58,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
         title: "The Vision Behind West Bengal Tech",
         content: [
           "West Bengal has long been an incubator for intellectual brilliance and technical curiosity. From prestigious academic institutions to thriving engineering hubs in Salt Lake Sector V and New Town, the region boasts an impressive concentration of engineering talent.",
-          "However, developer communities, open-source projects, and regional startup stories have often remained fragmented across disparate social channels. The west-bengal.tech initiative was born out of a collective passion within the React Kolkata community to unify this ecosystem under a singular, high-performance digital platform.",
+          "However, developer communities, open-source projects, and regional startup stories have often remained fragmented across disparate social channels. The westbengal.tech initiative was born out of a collective passion within the React Kolkata community to unify this ecosystem under a singular, high-performance digital platform.",
           "Our primary objective is clear: create a transparent, inclusive, and modern community forum where developers can discover fresh perspectives, publish high-impact articles, showcase open-source projects, and connect directly with hiring startups across West Bengal.",
         ],
       },
@@ -78,7 +78,7 @@ export const MOCK_ARTICLES: ArticleItem[] = [
         title: "Empowering Local Ecosystems",
         content: [
           "In modern software development, proximity and active peer networks are vital for career acceleration. By building a unified digital pulse, we enable early-stage engineering students to learn alongside senior staff engineers and startup founders.",
-          "Through regular technical write-ups, community meetups, and collaborative open-source projects, west-bengal.tech bridges the gap between regional talent and global opportunities.",
+          "Through regular technical write-ups, community meetups, and collaborative open-source projects, westbengal.tech bridges the gap between regional talent and global opportunities.",
         ],
       },
       {

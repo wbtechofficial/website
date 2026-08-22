@@ -28,7 +28,7 @@ export function DevelopersSection() {
       <div className="max-w-2xl mb-8">
         <div className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-xs font-medium text-foreground">
           <Terminal className="h-3.5 w-3.5 text-primary" />
-          <span className="font-mono text-[11px]">west-bengal.tech // for developers & builders</span>
+          <span className="font-mono text-[11px]">westbengal.tech // for developers & builders</span>
         </div>
         <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground leading-tight">
           A Home Built for <span className="text-primary">Bengal's Technologists</span>, Developers & Builders.

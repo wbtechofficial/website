@@ -77,7 +77,7 @@ export function HeroSection() {
         <div className="inline-flex items-center gap-2 rounded-none border border-primary/20 bg-card/60 px-4 py-1.5 text-xs font-medium text-foreground backdrop-blur-md transition-all duration-300 hover:scale-[1.02] cursor-pointer shadow-xs select-none">
           <Terminal className="h-3.5 w-3.5 text-primary" />
           <span className="font-mono text-[10px] sm:text-xs text-muted-foreground">
-            west-bengal.tech // developer network
+            westbengal.tech // developer network
           </span>
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse ml-1" />
         </div>
@@ -192,7 +192,7 @@ export function HeroSection() {
           className="p-0 border-0 bg-transparent ring-0 shadow-none max-w-md rounded-none max-h-[calc(100dvh-2rem)] overflow-y-auto"
         >
           <OnboardingForm
-            title="Join the west-bengal.tech Network"
+            title="Join the westbengal.tech Network"
             description="Create your profile to connect with regional engineers, startups, and career roles."
             buttonText="Submit Profile"
             onSubmit={handleJoinCommunity}

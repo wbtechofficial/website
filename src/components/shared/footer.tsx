@@ -17,7 +17,7 @@ export function Footer() {
               <Link href="/" className="inline-block group">
                 <img
                   src="/brand-logo/west-bengal-tech-full-light.svg"
-                  alt="west-bengal.tech"
+                  alt="westbengal.tech"
                   className="h-8 sm:h-9 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </Link>
@@ -183,7 +183,7 @@ export function Footer() {
         {/* Footer Bottom Metadata */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ice/50 font-normal">
           <p>
-            © {new Date().getFullYear()} west-bengal.tech initiative. Built for
+            © {new Date().getFullYear()} westbengal.tech initiative. Built for
             the developer community.
           </p>
           <p className="flex items-center gap-1">

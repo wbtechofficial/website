@@ -75,7 +75,7 @@ export function Navbar() {
                 <div className="flex items-center gap-2.5 sm:gap-3">
                     {/* Contact Us CTA (Desktop) */}
                     {/* <a
-                        href="mailto:hello@west-bengal.tech"
+                        href="mailto:hello@westbengal.tech"
                         className="hidden md:inline-flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 px-4 py-2 rounded-none text-xs font-semibold shadow-xs hover:shadow-md transition-all cursor-pointer select-none"
                     >
                         Contact Us
@@ -163,7 +163,7 @@ export function Navbar() {
                             <div className="space-y-4 pt-6 border-t border-border/50">
                                 {/* Mobile Contact Button */}
                                 {/* <a
-                                    href="mailto:hello@west-bengal.tech"
+                                    href="mailto:hello@westbengal.tech"
                                     onClick={() => setIsOpen(false)}
                                     className="flex w-full items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2.5 rounded-none text-xs font-semibold shadow-xs transition-all cursor-pointer"
                                 >
