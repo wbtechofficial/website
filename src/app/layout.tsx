@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { geistMono, inter } from "@/lib/fonts";
+import { geistMono, inter, unbounded } from "@/lib/fonts";
 import RootProvider from "./providers";
 
 import "./globals.css";
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     return (
         <html
             lang="en"
-            className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+            className={`${inter.variable} ${geistMono.variable} ${unbounded.variable} h-full antialiased`}
             suppressHydrationWarning
             data-scroll-behavior="smooth"
         >

@@ -1,4 +1,4 @@
-import { Montserrat, Geist_Mono, Poppins, Inter } from "next/font/google";
+import { Montserrat, Geist_Mono, Poppins, Inter, Unbounded } from "next/font/google";
 
 export const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -20,4 +20,10 @@ export const inter = Inter({
 export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+export const unbounded = Unbounded({
+  variable: "--font-unbounded",
+  subsets: ["latin"],
+  weight: ["400", "600", "800"],
 });
