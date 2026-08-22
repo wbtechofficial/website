@@ -26,24 +26,24 @@ export function DevelopersSection() {
 
       {/* Header - concise */}
       <div className="max-w-2xl mb-8">
-        <div className="inline-flex items-center gap-1.5 rounded-none border border-border/60 bg-muted/50 px-3 py-1 text-xs font-medium text-foreground">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-xs font-medium text-foreground">
           <Terminal className="h-3.5 w-3.5 text-primary" />
-          <span className="font-mono text-[11px]">west-bengal.tech // for technical geeks</span>
+          <span className="font-mono text-[11px]">west-bengal.tech // for developers & builders</span>
         </div>
         <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-bold tracking-tight text-foreground leading-tight">
-          Built for <span className="text-primary">technical geeks</span> who want to belong.
+          A Home Built for <span className="text-primary">Bengal's Technologists</span>, Developers & Builders.
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          For students, self-taught devs and builders across Bengal looking for a real community — not just a feed.
+          Connecting engineers, self-taught coders, and innovators across Bengal to share knowledge, collaborate on open-source, and grow together.
         </p>
       </div>
 
       {/* Simple concise mosaic - 6 equal cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* 1 */}
-        <div className="rounded-none border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 transition-colors">
+        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
           <div>
-            <div className="h-9 w-9 rounded-none bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
               <Users className="h-4 w-4" />
             </div>
             <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
@@ -59,9 +59,9 @@ export function DevelopersSection() {
         </div>
 
         {/* 2 */}
-        <div className="rounded-none border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 transition-colors">
+        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
           <div>
-            <div className="h-9 w-9 rounded-none bg-coral/10 text-coral border border-coral/20 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-coral/10 text-coral border border-coral/20 flex items-center justify-center">
               <Lightbulb className="h-4 w-4" />
             </div>
             <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
@@ -77,9 +77,9 @@ export function DevelopersSection() {
         </div>
 
         {/* 3 */}
-        <div className="rounded-none border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 transition-colors">
+        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
           <div>
-            <div className="h-9 w-9 rounded-none bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
               <ShieldCheck className="h-4 w-4" />
             </div>
             <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
@@ -95,9 +95,9 @@ export function DevelopersSection() {
         </div>
 
         {/* 4 */}
-        <div className="rounded-none border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 transition-colors">
+        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
           <div>
-            <div className="h-9 w-9 rounded-none bg-coral/10 text-coral border border-coral/20 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-coral/10 text-coral border border-coral/20 flex items-center justify-center">
               <GitBranch className="h-4 w-4" />
             </div>
             <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
@@ -113,9 +113,9 @@ export function DevelopersSection() {
         </div>
 
         {/* 5 */}
-        <div className="rounded-none border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 transition-colors">
+        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
           <div>
-            <div className="h-9 w-9 rounded-none bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
               <MessageCircle className="h-4 w-4" />
             </div>
             <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
@@ -131,9 +131,9 @@ export function DevelopersSection() {
         </div>
 
         {/* 6 - Join the Guild CTA Card */}
-        <div className="rounded-none border border-transparent bg-gradient-to-br from-[#0BA09C] via-[#098b88] to-[#072049] p-5 shadow-md flex flex-col justify-between text-white hover:shadow-lg transition-all duration-300">
+        <div className="rounded-xl border border-transparent bg-gradient-to-br from-[#0BA09C] via-[#098b88] to-[#072049] p-5 shadow-md flex flex-col justify-between text-white hover:shadow-lg transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-none bg-white/10 text-white border border-white/20 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-white/10 text-white border border-white/20 flex items-center justify-center">
               <Zap className="h-4 w-4 text-white" />
             </div>
             <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-white">
@@ -146,7 +146,7 @@ export function DevelopersSection() {
           <div className="mt-4 pt-3 border-t border-white/15 flex flex-col gap-2">
             <button
               onClick={() => window.dispatchEvent(new Event("open-onboarding"))}
-              className="w-full py-2 bg-white text-[#072049] hover:bg-white/90 font-bold text-xs rounded-none transition-all cursor-pointer shadow-xs"
+              className="w-full py-2 bg-white text-[#072049] hover:bg-white/90 font-bold text-xs rounded-lg transition-all cursor-pointer shadow-xs"
             >
               Register Now
             </button>

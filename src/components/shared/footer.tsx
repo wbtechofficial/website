@@ -31,18 +31,17 @@ export function Footer() {
               {/* Community Location & Sponsorship Pill */}
               <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-medium">
                 <span className="inline-flex items-center gap-1 bg-white/5 text-ice/80 px-2.5 py-1 rounded-md border border-white/10">
-                  <MapPin className="h-3 w-3 text-primary" /> Sector V, Kolkata
+                  <MapPin className="h-3 w-3 text-primary" /> Kolkata
                 </span>
                 <span className="inline-flex items-center gap-1 bg-white/5 text-ice/80 px-2.5 py-1 rounded-md border border-white/10">
-                  <Sparkles className="h-3 w-3 text-coral" /> React Kolkata
-                  Guild
+                  <Sparkles className="h-3 w-3 text-coral" /> West Bengal Tech Guild
                 </span>
-              </div>
+                </div>
             </div>
           </div>
 
           {/* Navigation Links Column 1 */}
-          <div>
+          {/* <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">
               Ecosystem
             </h4>
@@ -96,10 +95,10 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Navigation Links Column 2 */}
-          <div>
+          {/* <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">
               Community
             </h4>
@@ -141,10 +140,10 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Navigation Links Column 3 */}
-          <div>
+          {/* <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">
               Legal & Meta
             </h4>
@@ -178,7 +177,7 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer Bottom Metadata */}
