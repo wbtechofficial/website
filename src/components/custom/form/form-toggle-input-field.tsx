@@ -33,27 +33,30 @@ export default function FormToggleInputField({
   return (
     <Field data-invalid={isInvalid} className={className}>
       <FieldLabel>{label}</FieldLabel>
-      <div className="flex gap-2">
-        {options.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => onChange(option.value)}
-            aria-pressed={value === option.value}
-            aria-label={`Select ${option.label}`}
-            className={cn(
-              "grow flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer select-none",
-              value === option.value
-                ? "bg-primary text-white border-transparent shadow-xs"
-                : "bg-muted/30 text-muted-foreground border-border/60 hover:bg-muted/60",
-            )}
-          >
-            <span className="h-3.5 w-3.5 flex items-center justify-center">
-              {option.icon}
-            </span>
-            <span>{option.label}</span>
-          </button>
-        ))}
+      <div className="flex p-1 bg-muted/40 dark:bg-muted/15 border border-border/60 rounded-xl w-full gap-1">
+        {options.map((option) => {
+          const isActive = value === option.value;
+          return (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => onChange(option.value)}
+              aria-pressed={isActive}
+              aria-label={`Select ${option.label}`}
+              className={cn(
+                "grow flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer select-none border",
+                isActive
+                  ? "bg-primary text-white border-transparent shadow-xs"
+                  : "bg-transparent text-muted-foreground hover:text-foreground border-transparent hover:bg-muted/30 dark:hover:bg-muted/10",
+              )}
+            >
+              <span className="h-3.5 w-3.5 flex items-center justify-center shrink-0">
+                {option.icon}
+              </span>
+              <span>{option.label}</span>
+            </button>
+          );
+        })}
       </div>
       {isInvalid && error && <FieldError errors={[{ message: error }]} />}
     </Field>

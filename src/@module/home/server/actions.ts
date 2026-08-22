@@ -13,7 +13,7 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     throw new Error("Validation failed. Please check your form inputs.");
   }
 
-  const { name, email, contactNumber, profession } = validation.data;
+  const { name, email, contactNumber, profession, organisation_name } = validation.data;
 
   // 2. Initialize Supabase client
   const supabase = await createClient();
@@ -56,6 +56,7 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     email,
     contact_number: contactNumber,
     profession,
+    organisation_name,
   });
 
   if (insertError) {

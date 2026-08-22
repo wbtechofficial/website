@@ -10,6 +10,10 @@ export const onboardingFormSchema = z.object({
     .string()
     .regex(/^\d{10}$/, "Contact number must be exactly 10 digits."),
   profession: z.enum(["Working Professional", "Student"]),
+  organisation_name: z
+    .string()
+    .min(2, "Organisation/Institution name must be at least 2 characters.")
+    .max(100, "Organisation/Institution name must be at most 100 characters."),
 });
 
 export type OnboardingFormData = z.infer<typeof onboardingFormSchema>;

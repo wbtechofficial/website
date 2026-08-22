@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { User, Mail, Phone, Briefcase, GraduationCap } from "lucide-react";
+import { User, Mail, Phone, Briefcase, GraduationCap, Building2 } from "lucide-react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -64,6 +64,7 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
         email: "",
         contactNumber: "",
         profession: "Working Professional",
+        organisation_name: "",
       },
     });
 
@@ -87,6 +88,21 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
 
           <form onSubmit={handleFormSubmit} className="space-y-3">
             <FieldGroup>
+              {/* Profession Toggle Field */}
+              <Controller
+                name="profession"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <FormToggleInputField
+                    label="Profession"
+                    options={professionOptions}
+                    value={value}
+                    onChange={onChange}
+                    error={errors.profession?.message}
+                  />
+                )}
+              />
+
               {/* Name Field */}
               <IconFormInputField
                 icon={<User className="h-4 w-4" />}
@@ -128,19 +144,17 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
                 })}
               />
 
-              {/* Profession Toggle Field */}
-              <Controller
-                name="profession"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <FormToggleInputField
-                    label="Profession"
-                    options={professionOptions}
-                    value={value}
-                    onChange={onChange}
-                    error={errors.profession?.message}
-                  />
-                )}
+              {/* Organisation Name Field */}
+              <IconFormInputField
+                icon={<Building2 className="h-4 w-4" />}
+                label="Organisation / Institution Name"
+                fieldName="organisation_name"
+                type="text"
+                placeholder="Company, startup, college or university"
+                maxLength={100}
+                showCharacterCount={true}
+                error={errors.organisation_name?.message}
+                {...register("organisation_name")}
               />
             </FieldGroup>
 
