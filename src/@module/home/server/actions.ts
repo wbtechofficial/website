@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/integrations/supabase/server";
+import { sendWelcomeEmail } from "@/lib/email";
 import {
   onboardingFormSchema,
   type OnboardingFormData,
@@ -62,6 +63,14 @@ export async function joinCommunityAction(data: OnboardingFormData) {
   if (insertError) {
     console.error("Supabase insert error:", insertError);
     throw new Error("Failed to submit onboarding profile. Please try again.");
+  }
+
+  // 6. Send welcome email via Resend
+  try {
+    await sendWelcomeEmail({ email, name });
+  } catch (emailErr) {
+    console.error("Failed to send welcome email during onboarding:", emailErr);
+    // Note: Database insert succeeded, so we don't throw to avoid breaking user experience
   }
 
   return {
