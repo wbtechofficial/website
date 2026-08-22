@@ -20,20 +20,22 @@ export function AnnouncementBanner() {
           </span>
           Speaker CFP
         </span>
-        
+
         {/* Core Message */}
         <span className="text-muted-foreground dark:text-ice/70 font-normal">
-          React Kolkata Meetup #18 Call for Proposals (CFP) is open.
+          OpenSource Con India Call for Proposals(CFP) is Open
         </span>
 
         {/* CTA Link */}
-        <Link
-          href="/article/meetup-2"
+        <a
+          href="https://forms.gle/tFUzkFuCyb1heshu9"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group inline-flex items-center gap-1 font-semibold text-foreground hover:text-primary dark:text-white dark:hover:text-teal transition-colors ml-0.5 shrink-0"
         >
-          Submit Talk 
+          Submit Talk
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
+        </a>
       </div>
 
       {/* Dismiss Button */}

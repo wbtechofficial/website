@@ -24,7 +24,7 @@ export function BrandLogo({
     <div className={cn("inline-flex items-center gap-2 group", className)}>
       <img
         src="/brand-logo/west-bengal-tech-short-dark.svg"
-        alt="west-bengal.tech"
+        alt="westbengal.tech"
         className={cn(
           SIZE_CLASSES[size],
           "w-auto dark:hidden block transition-transform duration-300 group-hover:scale-[1.03]",
@@ -32,7 +32,7 @@ export function BrandLogo({
       />
       <img
         src="/brand-logo/west-bengal-tech-short-light.svg"
-        alt="west-bengal.tech"
+        alt="westbengal.tech"
         className={cn(
           SIZE_CLASSES[size],
           "w-auto hidden dark:block transition-transform duration-300 group-hover:scale-[1.03]",
@@ -43,7 +43,7 @@ export function BrandLogo({
 
   if (href) {
     return (
-      <Link href={href} aria-label="west-bengal.tech home">
+      <Link href={href} aria-label="westbengal.tech home">
         {logoContent}
       </Link>
     );

@@ -31,7 +31,7 @@ export function Navbar() {
                     <BrandLogo size="md" />
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    {/* <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
                         <Link
                             href="/"
                             className={cn(
@@ -42,7 +42,6 @@ export function Navbar() {
                             Home
                         </Link>
 
-                        {/* Dropdown Menu */}
                         <div className="relative group flex items-center gap-1.5 cursor-pointer text-foreground/80 hover:text-primary transition-colors py-2 text-xs sm:text-sm font-medium tracking-tight">
                             <span>Explore</span>
                             <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180" />
@@ -69,18 +68,18 @@ export function Navbar() {
                         >
                             Showcase
                         </Link>
-                    </nav>
+                    </nav> */}
                 </div>
 
                 {/* Action Buttons (Right) */}
                 <div className="flex items-center gap-2.5 sm:gap-3">
                     {/* Contact Us CTA (Desktop) */}
-                    <a
-                        href="mailto:hello@west-bengal.tech"
+                    {/* <a
+                        href="mailto:hello@westbengal.tech"
                         className="hidden md:inline-flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 px-4 py-2 rounded-none text-xs font-semibold shadow-xs hover:shadow-md transition-all cursor-pointer select-none"
                     >
                         Contact Us
-                    </a>
+                    </a> */}
 
                     {/* Theme Toggle */}
                     <ThemeToggleDropdown />
@@ -163,13 +162,13 @@ export function Navbar() {
                             {/* Drawer Bottom Actions & Community Footer */}
                             <div className="space-y-4 pt-6 border-t border-border/50">
                                 {/* Mobile Contact Button */}
-                                <a
-                                    href="mailto:hello@west-bengal.tech"
+                                {/* <a
+                                    href="mailto:hello@westbengal.tech"
                                     onClick={() => setIsOpen(false)}
                                     className="flex w-full items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2.5 rounded-none text-xs font-semibold shadow-xs transition-all cursor-pointer"
                                 >
                                     Contact Us
-                                </a>
+                                </a> */}
 
                                 {/* Community Metadata Note */}
                                 <div className="rounded-none border border-border/60 bg-muted/30 p-3 text-center">

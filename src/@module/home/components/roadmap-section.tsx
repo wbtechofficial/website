@@ -19,7 +19,7 @@ const STEPS = [
     number: "02",
     title: "Join the network",
     description:
-      "Create your profile, showcase your skills and tech stack, connect with fellow builders, and take your place among 1,200+ people growing the west-bengal.tech community.",
+      "Create your profile, showcase your skills and tech stack, connect with fellow builders, and take your place among fellow builders growing the westbengal.tech community.",
     image: "/roadmap/join.jpg",
     imageAlt:
       "Community members greeting each other beside a verified profile card",
@@ -158,16 +158,16 @@ export default function RoadmapSection() {
         <header className={styles.header}>
           <div className={styles.kicker}>
             <span className={styles.kickerDot} aria-hidden="true" />
-            west-bengal.tech // the journey
+            westbengal.tech // the journey
           </div>
           <h2 id="roadmap-heading" className={styles.title}>
-            Your path into Bengal&apos;s{" "}
-            <span className={styles.titleAccent}>tech network</span>
+            Your Gateway to West Bengal&apos;s{" "}
+            <span className={styles.titleAccent}>Tech Ecosystem</span>
           </h2>
           <p className={styles.subtitle}>
-            Four steps from discovering the scene to getting on the radar of
-            startups and hiring teams — a premium product journey for every
-            engineer in West Bengal.
+            Four simple steps from discovering regional opportunities to
+            spotlighting your work for top tech teams and startups across West
+            Bengal.
           </p>
         </header>
 

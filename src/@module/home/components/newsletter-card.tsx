@@ -21,7 +21,7 @@ export function NewsletterCard() {
               Stay ahead with West Bengal Tech Weekly
             </h2>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">
-              Join 1,200+ developers, startup founders, and engineering leaders
+              Join developers, startup founders, and engineering leaders
               receiving our curated Friday newsletter. Zero spam, high signal.
             </p>
             <div className="pt-2">

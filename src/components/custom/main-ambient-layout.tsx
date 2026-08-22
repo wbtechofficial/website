@@ -6,7 +6,7 @@ interface MainAmbientLayoutProps {
 }
 
 /**
- * Ambient multi-layer glow using the west-bengal.tech brand palette:
+ * Ambient multi-layer glow using the westbengal.tech brand palette:
  * Navy #072049 · Teal #0BA09C · Coral #FF6B4A · Ice #F4F7FB
  */
 export function MainAmbientLayout({
