@@ -1,14 +1,18 @@
 import { DevelopersSection } from "@/@module/home/components/developers-section";
 import { HeroSection } from "@/@module/home/components/hero-section";
+import RibbonTicker from "@/components/custom/ribbon-ticker";
 
 export default async function Home() {
-    return (
-        <>
-            {/* Hero Section */}
-            <HeroSection />
+  return (
+    <>
+      {/* Hero Section */}
+      <HeroSection />
 
-            {/* Pointer Sections — Inspired by existing UI (same container, gradients, rounded-2xl cards) */}
-            <DevelopersSection />
-        </>
-    );
+      {/* Scrolling values ticker */}
+      <RibbonTicker />
+
+      {/* Pointer Sections */}
+      <DevelopersSection />
+    </>
+  );
 }
