@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, Sparkles, MapPin, ChevronDown, ChevronRight } from "lucide-react";
 import { BrandLogo } from "@/components/custom/brand-logo";
 import { ThemeToggleDropdown } from "@/components/custom/theme-toggle-dropdown";
+import { SocialIcon } from "@/components/custom/social-icon";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -73,6 +74,18 @@ export function Navbar() {
 
                 {/* Action Buttons (Right) */}
                 <div className="flex items-center gap-2.5 sm:gap-3">
+                    {/* GitHub Link */}
+                    <a
+                        href="https://github.com/wbtechofficial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/60 bg-card/60 text-foreground hover:bg-muted hover:text-primary transition-all duration-200 shadow-xs group"
+                        aria-label="GitHub Organization"
+                        title="GitHub Organization"
+                    >
+                        <SocialIcon name="github" size="sm" colorPopOnHover={false} />
+                    </a>
+
                     {/* Contact Us CTA (Desktop) */}
                     {/* <a
                         href="mailto:hello@westbengal.tech"
@@ -84,8 +97,8 @@ export function Navbar() {
                     {/* Theme Toggle */}
                     <ThemeToggleDropdown />
 
-                    {/* Mobile Drawer Trigger */}
-                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                    {/* Mobile Drawer Trigger & Navigation */}
+                    {/* <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger
                             render={
                                 <Button
@@ -99,12 +112,10 @@ export function Navbar() {
                             }
                         />
 
-                        {/* Mobile Navigation Drawer Content */}
                         <SheetContent
                             side="right"
                             className="w-[310px] sm:w-[360px] p-6 bg-background/95 backdrop-blur-xl border-l border-border/80 flex flex-col justify-between"
                         >
-                            {/* Drawer Top Header */}
                             <div>
                                 <SheetHeader className="text-left border-b border-border/50 pb-4 mb-5">
                                     <SheetTitle className="flex items-center justify-between">
@@ -115,7 +126,6 @@ export function Navbar() {
                                     </SheetTitle>
                                 </SheetHeader>
 
-                                {/* Mobile Navigation Items List */}
                                 <nav
                                     className="flex flex-col space-y-1.5"
                                     aria-label="Mobile Navigation"
@@ -159,18 +169,7 @@ export function Navbar() {
                                 </nav>
                             </div>
 
-                            {/* Drawer Bottom Actions & Community Footer */}
                             <div className="space-y-4 pt-6 border-t border-border/50">
-                                {/* Mobile Contact Button */}
-                                {/* <a
-                                    href="mailto:hello@westbengal.tech"
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex w-full items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2.5 rounded-none text-xs font-semibold shadow-xs transition-all cursor-pointer"
-                                >
-                                    Contact Us
-                                </a> */}
-
-                                {/* Community Metadata Note */}
                                 <div className="rounded-none border border-border/60 bg-muted/30 p-3 text-center">
                                     <p className="text-[11px] font-mono text-muted-foreground flex items-center justify-center gap-1">
                                         <MapPin className="h-3 w-3 text-primary" /> Sector V,
@@ -179,7 +178,7 @@ export function Navbar() {
                                 </div>
                             </div>
                         </SheetContent>
-                    </Sheet>
+                    </Sheet> */}
                 </div>
             </div>
         </header>
