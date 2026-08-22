@@ -1,8 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import ScreenLoader from "@/components/custom/screen-loader";
 import { cn } from "@/lib/utils";
-import ScreenLoader from "../custom/screen-loader";
 
 interface ScreenLoaderContextType {
   isLoading: boolean;

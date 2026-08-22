@@ -32,7 +32,15 @@ function buildTimeline(
   isDark: boolean,
   onComplete: (() => void) | undefined,
 ): gsap.core.Timeline {
-  const { overlayRef, stageRef, wordWRef, wordBRef, wordTRef, dividerRef, logoRef } = refs;
+  const {
+    overlayRef,
+    stageRef,
+    wordWRef,
+    wordBRef,
+    wordTRef,
+    dividerRef,
+    logoRef,
+  } = refs;
   const overlay = overlayRef.current!;
   const stage = stageRef.current!;
   const wordW = wordWRef.current!;
@@ -52,33 +60,87 @@ function buildTimeline(
   gsap.set(wordB, { opacity: 0, y: "-5vh", filter: "blur(10px)" });
   gsap.set(wordT, { opacity: 0, x: "6vw", filter: "blur(10px)" });
   gsap.set(divider, { height: 0, opacity: 0 });
-  gsap.set(logo, { opacity: 0, x: "-10vw", rotation: 180, scale: 0.3, filter: "blur(12px)" });
+  gsap.set(logo, {
+    opacity: 0,
+    x: "-10vw",
+    rotation: 180,
+    scale: 0.3,
+    filter: "blur(12px)",
+  });
   gsap.set(overlay, { autoAlpha: 1 });
   gsap.set(stage, { scale: 1, opacity: 1 });
 
   const tl = gsap.timeline({ onComplete });
 
   // ── PHASE 1: Words fly in ──
-  tl.to(wordW, { x: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" }, 0.1);
-  tl.to(wordB, { y: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" }, 1);
-  tl.to(wordT, { x: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" }, 1.8);
+  tl.to(
+    wordW,
+    { x: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" },
+    0.1,
+  );
+  tl.to(
+    wordB,
+    { y: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" },
+    1,
+  );
+  tl.to(
+    wordT,
+    { x: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" },
+    1.8,
+  );
 
   // ── PHASE 2: Divider draws in ──
   tl.to(divider, { opacity: 1, duration: 0.2, ease: "power1.out" }, 0.8);
-  tl.to(divider, { height: DIVIDER_HEIGHT, duration: 0.6, ease: "power2.out" }, 0.8);
-  tl.to(divider, { boxShadow: glow.hot, duration: 0.3, ease: "power1.in" }, 1.2);
+  tl.to(
+    divider,
+    { height: DIVIDER_HEIGHT, duration: 0.6, ease: "power2.out" },
+    0.8,
+  );
+  tl.to(
+    divider,
+    { boxShadow: glow.hot, duration: 0.3, ease: "power1.in" },
+    1.2,
+  );
 
   // ── PHASE 3: Logo spins in ──
-  tl.to(logo, { x: 0, rotation: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "power2.out" }, 0.5);
+  tl.to(
+    logo,
+    {
+      x: 0,
+      rotation: 0,
+      scale: 1,
+      opacity: 1,
+      filter: "blur(0px)",
+      duration: 0.8,
+      ease: "power2.out",
+    },
+    0.5,
+  );
 
   // ── PHASE 4: Breathing divider glow ──
-  tl.to(divider, { boxShadow: glow.base, duration: 0.3, ease: "sine.inOut" }, 1.8);
-  tl.to(divider, { boxShadow: glow.hot, duration: 0.3, ease: "sine.inOut" }, 2.1);
+  tl.to(
+    divider,
+    { boxShadow: glow.base, duration: 0.3, ease: "sine.inOut" },
+    1.8,
+  );
+  tl.to(
+    divider,
+    { boxShadow: glow.hot, duration: 0.3, ease: "sine.inOut" },
+    2.1,
+  );
 
   // ── PHASE 5: Outro — zoom + fade ──
   tl.to(stage, { scale: 12, duration: 1.1, ease: "expo.in" }, 3);
   tl.to(stage, { opacity: 0, duration: 0.8, ease: "power3.in" }, 3);
-  tl.to(overlay, { background: isDark ? "rgba(10,14,20,0)" : "rgba(245,245,245,0)", duration: 0.6, ease: "power1.in" }, 3.5);
+  tl.to(
+    overlay,
+    {
+      background: isDark ? "rgba(10,14,20,0)" : "rgba(245,245,245,0)",
+      duration: 0.6,
+      ease: "power1.in",
+    },
+    3.5,
+  );
 
   // ── PHASE 6: Hide overlay ──
   tl.set(overlay, { autoAlpha: 0 }, 4.2);
@@ -93,7 +155,7 @@ function resolveIsDark(resolvedTheme: string | undefined): boolean {
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
-export function useWbtIntro(onComplete?: () => void) {
+export function useScreenLoaderAnimation(onComplete?: () => void) {
   const { resolvedTheme } = useTheme();
 
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -107,7 +169,15 @@ export function useWbtIntro(onComplete?: () => void) {
   onCompleteRef.current = onComplete;
 
   useEffect(() => {
-    const refs: WbtIntroRefs = { overlayRef, stageRef, wordWRef, wordBRef, wordTRef, dividerRef, logoRef };
+    const refs: WbtIntroRefs = {
+      overlayRef,
+      stageRef,
+      wordWRef,
+      wordBRef,
+      wordTRef,
+      dividerRef,
+      logoRef,
+    };
     const allMounted = Object.values(refs).every((r) => r.current !== null);
     if (!allMounted) return;
 
@@ -117,8 +187,16 @@ export function useWbtIntro(onComplete?: () => void) {
     return () => {
       tl.kill();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { overlayRef, stageRef, wordWRef, wordBRef, wordTRef, dividerRef, logoRef };
+  return {
+    overlayRef,
+    stageRef,
+    wordWRef,
+    wordBRef,
+    wordTRef,
+    dividerRef,
+    logoRef,
+  };
 }
