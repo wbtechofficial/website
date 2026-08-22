@@ -21,7 +21,7 @@ export default function FormSubmitButton({
             type="submit"
             disabled={isDisabled || isLoading}
             className={cn(
-                "w-full h-9 rounded-xl text-white font-semibold cursor-pointer shadow-sm hover:shadow-md transition-all",
+                "w-full h-9 rounded-none text-white font-semibold cursor-pointer shadow-sm hover:shadow-md transition-all",
                 className,
             )}
         >

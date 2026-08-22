@@ -46,6 +46,11 @@ export function MainAmbientLayout({
         }}
       />
 
+      {/* Global grid background pattern */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-0 bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gridBackground.png')] bg-repeat bg-center opacity-60 dark:opacity-[0.08] transition-opacity duration-500"
+      />
+
       <div className="relative z-10 w-full min-h-screen flex flex-col">
         {children}
       </div>

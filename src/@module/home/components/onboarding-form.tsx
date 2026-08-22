@@ -75,7 +75,7 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
     return (
       <div
         className={cn(
-          "w-full max-w-md rounded-3xl border border-border/80 bg-card shadow-2xl backdrop-blur-lg animate-in fade-in zoom-in-95 duration-300 overflow-hidden",
+          "w-full max-w-md rounded-none border border-border/80 bg-card shadow-2xl backdrop-blur-lg animate-in fade-in zoom-in-95 duration-300 overflow-hidden",
           className,
         )}
         ref={ref}

@@ -33,7 +33,7 @@ export default function FormToggleInputField({
   return (
     <Field data-invalid={isInvalid} className={className}>
       <FieldLabel>{label}</FieldLabel>
-      <div className="flex p-1 bg-muted/40 dark:bg-muted/15 border border-border/60 rounded-xl w-full gap-1">
+      <div className="flex p-1 bg-muted/40 dark:bg-muted/15 border border-border/60 rounded-none w-full gap-1">
         {options.map((option) => {
           const isActive = value === option.value;
           return (
@@ -44,7 +44,7 @@ export default function FormToggleInputField({
               aria-pressed={isActive}
               aria-label={`Select ${option.label}`}
               className={cn(
-                "grow flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer select-none border",
+                "grow flex items-center justify-center gap-2 py-1.5 px-3 rounded-none text-xs font-semibold transition-all duration-200 cursor-pointer select-none border",
                 isActive
                   ? "bg-primary text-white border-transparent shadow-xs"
                   : "bg-transparent text-muted-foreground hover:text-foreground border-transparent hover:bg-muted/30 dark:hover:bg-muted/10",

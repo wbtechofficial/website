@@ -64,7 +64,7 @@ export default function FormInputField({
           placeholder={placeholder}
           aria-invalid={isInvalid}
           aria-describedby={isInvalid ? `${fieldName}-error` : undefined}
-          className="pl-10 h-10 rounded-xl bg-muted/20 focus:bg-background transition-all"
+          className="pl-10 h-10 rounded-none bg-muted/20 focus:bg-background transition-all"
           autoComplete="off"
           maxLength={maxLength}
           onChange={handleInputChange}
