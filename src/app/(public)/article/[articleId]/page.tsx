@@ -11,8 +11,11 @@ import {
   ArrowUpRight,
   CheckCircle2,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { getArticleByIdOrSlug, MOCK_ARTICLES } from "@/base/data/mock-data";
+import { SITE_CONFIG } from "@/lib/seo-config";
+import { JsonLd } from "@/components/custom/json-ld";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -24,6 +27,49 @@ export async function generateStaticParams() {
   return MOCK_ARTICLES.map((article) => ({
     articleId: article.id,
   }));
+}
+
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+  const { articleId } = await params;
+  const article = getArticleByIdOrSlug(articleId);
+
+  if (!article) {
+    return {
+      title: "Article Not Found",
+    };
+  }
+
+  const pageUrl = `${SITE_CONFIG.url}/article/${article.id}`;
+  const ogImageUrl = article.imageUrl || SITE_CONFIG.ogImage;
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    keywords: [...article.tags, ...SITE_CONFIG.keywords],
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: pageUrl,
+      type: "article",
+      publishedTime: article.date,
+      authors: [article.authorName],
+      images: [
+        {
+          url: ogImageUrl,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      images: [ogImageUrl],
+    },
+  };
 }
 
 export default async function ArticleDetailPage({ params }: ArticlePageProps) {
@@ -39,8 +85,36 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
     (a) => a.id !== article.id,
   ).slice(0, 3);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: article.title,
+    description: article.excerpt,
+    image: article.imageUrl || SITE_CONFIG.ogImage,
+    datePublished: article.date,
+    author: {
+      "@type": "Person",
+      name: article.authorName,
+      jobTitle: article.authorRole,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_CONFIG.organization.name,
+      logo: {
+        "@type": "ImageObject",
+        url: SITE_CONFIG.organization.logo,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_CONFIG.url}/article/${article.id}`,
+    },
+    keywords: article.tags.join(", "),
+  };
+
   return (
     <main className="flex-1 py-8 sm:py-12 lg:py-16">
+      <JsonLd data={articleJsonLd} />
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <div className="mb-8">
