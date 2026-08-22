@@ -25,7 +25,7 @@ export default function RootPublicLayout({ children }: PropsWithChildren) {
       <Footer />
 
       {/* Sticky Floating Social Media Sidebar */}
-      <FloatingSocials position="left" />
+      {/* <FloatingSocials position="left" /> */}
 
       {/* System Integrated Cookie Consent Notification */}
       <CookieConsent />
