@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   Code2,
@@ -49,6 +50,22 @@ export function HeroSection() {
 
   return (
     <section className="relative w-full text-sm pt-20 pb-24 sm:pt-24 sm:pb-32 lg:pt-28 lg:pb-36 border-b border-border/40 overflow-hidden">
+      {/* Background Vector Image with Gradient Overlay and Horizontal Fade */}
+      <div className="absolute inset-y-0 left-0 right-0 w-full pointer-events-none -z-20 overflow-hidden select-none">
+        <Image
+          src="/images/west-bengal-tech-vector-image.png"
+          alt="West Bengal Tech Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-20 dark:opacity-[0.18] mix-blend-luminosity"
+        />
+        {/* Left Side Fade */}
+        <div className="absolute top-0 bottom-0 left-0 w-1/4 bg-gradient-to-r from-background via-background/40 to-transparent" />
+        {/* Right Side Fade */}
+        <div className="absolute top-0 bottom-0 right-0 w-1/4 bg-gradient-to-l from-background via-background/40 to-transparent" />
+      </div>
+
       {/* Ambient Subtle Accent Blur */}
       <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-72 w-[600px] rounded-full bg-primary/5 blur-[100px]" />
 
@@ -87,13 +104,13 @@ export function HeroSection() {
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
 
-          <a
+          {/* <a
             href="#developers"
             className="h-11 flex items-center justify-center gap-2 border border-border bg-card/40 hover:bg-muted/40 backdrop-blur-xs rounded-none px-8 font-semibold text-xs sm:text-sm transition-all duration-200 select-none cursor-pointer"
           >
             <span>Explore Projects</span>
             <Code2 className="h-4 w-4 text-primary" />
-          </a>
+          </a> */}
         </div>
 
         {/* Metrics Grid to Fill Whitespace */}
