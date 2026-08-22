@@ -90,11 +90,7 @@ function DesktopConnector({
       <defs>
         <ArrowMarker id={markerId} />
       </defs>
-      <path
-        className={styles.path}
-        d={path}
-        markerEnd={`url(#${markerId})`}
-      />
+      <path className={styles.path} d={path} markerEnd={`url(#${markerId})`} />
     </svg>
   );
 }
@@ -146,7 +142,7 @@ const LTR_PATH =
 const RTL_PATH =
   "M 1140 345 C 1110 510, 1340 555, 920 620 C 760 680, 880 786, 720 786";
 
-export function RoadmapSection() {
+export default function RoadmapSection() {
   return (
     <section
       id="roadmap"
@@ -182,7 +178,6 @@ export function RoadmapSection() {
               className={`${step.align === "left" ? styles.stepLeft : styles.stepRight} ${step.tiltClass}`}
               aria-labelledby={`roadmap-step-${step.id}`}
             >
-              
               <div className={styles.card}>
                 <span className={styles.badge}>{step.number}</span>
                 <h3 id={`roadmap-step-${step.id}`} className={styles.stepTitle}>
@@ -221,9 +216,18 @@ export function RoadmapSection() {
             markerId="roadmap-arrow-34"
           />
 
-          <MobileConnector className={styles.mobile12} markerId="roadmap-arrow-m12" />
-          <MobileConnector className={styles.mobile23} markerId="roadmap-arrow-m23" />
-          <MobileConnector className={styles.mobile34} markerId="roadmap-arrow-m34" />
+          <MobileConnector
+            className={styles.mobile12}
+            markerId="roadmap-arrow-m12"
+          />
+          <MobileConnector
+            className={styles.mobile23}
+            markerId="roadmap-arrow-m23"
+          />
+          <MobileConnector
+            className={styles.mobile34}
+            markerId="roadmap-arrow-m34"
+          />
         </div>
       </div>
     </section>

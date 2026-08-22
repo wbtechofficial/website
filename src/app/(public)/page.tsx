@@ -1,8 +1,7 @@
 import { DevelopersSection } from "@/@module/home/components/developers-section";
 import { HeroSection } from "@/@module/home/components/hero-section";
 import RibbonTicker from "@/components/custom/ribbon-ticker";
-import { RoadmapSection } from "@/@module/home/components/roadmap-section";
-
+import RoadmapSection from "@/@module/home/components/roadmap-section";
 
 export default async function Home() {
   return (
@@ -15,6 +14,8 @@ export default async function Home() {
 
       {/* Pointer Sections */}
       <DevelopersSection />
+
+      {/* Roadmap Section */}
       <RoadmapSection />
     </>
   );
