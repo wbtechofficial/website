@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { useTheme } from "next-themes";
 
 interface WbtIntroRefs {
   overlayRef: React.RefObject<HTMLDivElement | null>;
@@ -85,7 +86,16 @@ function buildTimeline(
   return tl;
 }
 
+function resolveIsDark(resolvedTheme: string | undefined): boolean {
+  if (resolvedTheme === "dark") return true;
+  if (resolvedTheme === "light") return false;
+  // Fallback to system preference if resolvedTheme is not yet available
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
 export function useWbtIntro(onComplete?: () => void) {
+  const { resolvedTheme } = useTheme();
+
   const overlayRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const wordWRef = useRef<HTMLDivElement>(null);
@@ -101,12 +111,13 @@ export function useWbtIntro(onComplete?: () => void) {
     const allMounted = Object.values(refs).every((r) => r.current !== null);
     if (!allMounted) return;
 
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = resolveIsDark(resolvedTheme);
     const tl = buildTimeline(refs, isDark, () => onCompleteRef.current?.());
 
     return () => {
       tl.kill();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { overlayRef, stageRef, wordWRef, wordBRef, wordTRef, dividerRef, logoRef };
