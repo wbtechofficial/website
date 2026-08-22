@@ -1,7 +1,7 @@
 "use client";
 
 import { useScreenLoaderAnimation } from "@/hooks/use-screenloder-animation";
-import "./styles.module.css";
+import "./screen-loader.css";
 
 export default function ScreenLoader({
   onComplete,
