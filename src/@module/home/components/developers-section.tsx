@@ -38,119 +38,154 @@ export function DevelopersSection() {
         </p>
       </div>
 
-      {/* Simple concise mosaic - 6 equal cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/* 1 */}
-        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
+      {/* Concise mosaic - 6 equal cards with uplifted layout & copy */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* 1: Community Spectrum */}
+        <div className="group relative rounded-2xl border border-border/70 bg-card/70 backdrop-blur-xs p-6 shadow-xs flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
-              <Users className="h-4 w-4" />
+            <div className="flex items-center justify-between">
+              <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Users className="h-5 w-5" />
+              </div>
+              <span className="text-[10px] text-primary/80 dark:text-teal font-mono uppercase tracking-wider bg-primary/5 dark:bg-primary/10 border border-primary/10 px-2.5 py-0.5 rounded-full font-semibold">
+                Builders
+              </span>
             </div>
-            <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
-              Target Audience
+            <h3 className="mt-4 font-heading text-base font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+              For Every Developer
             </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-              Unifying students, self-taught developers, active contributors, and regional builders who build in public.
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Unifying students, self-taught coders, open-source contributors, and senior engineering leaders across West Bengal.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-border/50 flex items-center text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-            Demographic Focus
+          <div className="mt-5 pt-3.5 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground font-mono">
+            <span className="uppercase tracking-wider text-[10px]">Community Spectrum</span>
+            <span className="text-primary font-semibold">01</span>
           </div>
         </div>
 
-        {/* 2 */}
-        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
+        {/* 2: Community Vision */}
+        <div className="group relative rounded-2xl border border-border/70 bg-card/70 backdrop-blur-xs p-6 shadow-xs flex flex-col justify-between hover:border-coral/40 hover:shadow-md transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-lg bg-coral/10 text-coral border border-coral/20 flex items-center justify-center">
-              <Lightbulb className="h-4 w-4" />
+            <div className="flex items-center justify-between">
+              <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral border border-coral/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Lightbulb className="h-5 w-5" />
+              </div>
+              <span className="text-[10px] text-coral font-mono uppercase tracking-wider bg-coral/5 dark:bg-coral/10 border border-coral/10 px-2.5 py-0.5 rounded-full font-semibold">
+                Vision
+              </span>
             </div>
-            <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
-              Core Mission
+            <h3 className="mt-4 font-heading text-base font-bold tracking-tight text-foreground group-hover:text-coral transition-colors">
+              Unifying Bengal's Tech Scene
             </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-              Breaking regional silos to build an open, collaborative ecosystem where local engineering talent gets spotlighted.
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Breaking regional silos to build an open, collaborative ecosystem where local software engineering talent gets spotlighted.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-border/50 flex items-center text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-            Community Purpose
+          <div className="mt-5 pt-3.5 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground font-mono">
+            <span className="uppercase tracking-wider text-[10px]">Community Mission</span>
+            <span className="text-coral font-semibold">02</span>
           </div>
         </div>
 
-        {/* 3 */}
-        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
+        {/* 3: Member Value */}
+        <div className="group relative rounded-2xl border border-border/70 bg-card/70 backdrop-blur-xs p-6 shadow-xs flex flex-col justify-between hover:border-emerald-500/40 hover:shadow-md transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
-              <ShieldCheck className="h-4 w-4" />
+            <div className="flex items-center justify-between">
+              <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <span className="text-[10px] text-emerald-500 font-mono uppercase tracking-wider bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/10 px-2.5 py-0.5 rounded-full font-semibold">
+                Value
+              </span>
             </div>
-            <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
-              Member Value
+            <h3 className="mt-4 font-heading text-base font-bold tracking-tight text-foreground group-hover:text-emerald-500 transition-colors">
+              Mentorship & Career Growth
             </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-              Peer code reviews, verified career roles, curated open-source repositories, and technical mentorship.
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Direct peer code reviews, verified regional career opportunities, open-source repositories, and tech mentorship circles.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-border/50 flex items-center text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-            Member Benefits
+          <div className="mt-5 pt-3.5 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground font-mono">
+            <span className="uppercase tracking-wider text-[10px]">Member Benefits</span>
+            <span className="text-emerald-500 font-semibold">03</span>
           </div>
         </div>
 
-        {/* 4 */}
-        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
+        {/* 4: Open Source First */}
+        <div className="group relative rounded-2xl border border-border/70 bg-card/70 backdrop-blur-xs p-6 shadow-xs flex flex-col justify-between hover:border-coral/40 hover:shadow-md transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-lg bg-coral/10 text-coral border border-coral/20 flex items-center justify-center">
-              <GitBranch className="h-4 w-4" />
+            <div className="flex items-center justify-between">
+              <div className="h-10 w-10 rounded-xl bg-coral/10 text-coral border border-coral/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <GitBranch className="h-5 w-5" />
+              </div>
+              <span className="text-[10px] text-coral font-mono uppercase tracking-wider bg-coral/5 dark:bg-coral/10 border border-coral/10 px-2.5 py-0.5 rounded-full font-semibold">
+                Code
+              </span>
             </div>
-            <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
-              Collaboration Model
+            <h3 className="mt-4 font-heading text-base font-bold tracking-tight text-foreground group-hover:text-coral transition-colors">
+              Open-Source & Collaboration
             </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-              Contribute to local repositories, participate in technical workgroups, and ship open-source packages.
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Contribute to local software repositories, participate in specialized workgroups, and ship impactful open-source tools.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-border/50 flex items-center text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-            Engagement System
+          <div className="mt-5 pt-3.5 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground font-mono">
+            <span className="uppercase tracking-wider text-[10px]">How We Build</span>
+            <span className="text-coral font-semibold">04</span>
           </div>
         </div>
 
-        {/* 5 */}
-        <div className="rounded-xl border border-border/70 bg-card p-5 shadow-xs flex flex-col justify-between hover:border-primary/25 hover:shadow-sm transition-all duration-200">
+        {/* 5: Meetups & Discussion */}
+        <div className="group relative rounded-2xl border border-border/70 bg-card/70 backdrop-blur-xs p-6 shadow-xs flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-lg bg-primary/10 text-primary border border-primary/20 flex items-center justify-center">
-              <MessageCircle className="h-4 w-4" />
+            <div className="flex items-center justify-between">
+              <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <MessageCircle className="h-5 w-5" />
+              </div>
+              <span className="text-[10px] text-primary/80 dark:text-teal font-mono uppercase tracking-wider bg-primary/5 dark:bg-primary/10 border border-primary/10 px-2.5 py-0.5 rounded-full font-semibold">
+                Connect
+              </span>
             </div>
-            <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-foreground">
-              Interaction Hub
+            <h3 className="mt-4 font-heading text-base font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+              Meetups & Technical Hubs
             </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-              Daily discussions on community chat servers and monthly face-to-face meetups for tech mixers.
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Active daily discussions on community chats, monthly in-person tech meetups, and regional engineering mixers.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-border/50 flex items-center text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-            Meeting Venue
+          <div className="mt-5 pt-3.5 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground font-mono">
+            <span className="uppercase tracking-wider text-[10px]">Where We Meet</span>
+            <span className="text-primary font-semibold">05</span>
           </div>
         </div>
 
-        {/* 6 - Join the Guild CTA Card */}
-        <div className="rounded-xl border border-transparent bg-gradient-to-br from-[#0BA09C] via-[#098b88] to-[#072049] p-5 shadow-md flex flex-col justify-between text-white hover:shadow-lg transition-all duration-300">
+        {/* 6: Join the Community Guild CTA Card */}
+        <div className="group relative rounded-2xl border border-transparent bg-gradient-to-br from-[#0BA09C] via-[#098b88] to-[#072049] p-6 shadow-md flex flex-col justify-between text-white hover:shadow-xl transition-all duration-300">
           <div>
-            <div className="h-9 w-9 rounded-lg bg-white/10 text-white border border-white/20 flex items-center justify-center">
-              <Zap className="h-4 w-4 text-white" />
+            <div className="flex items-center justify-between">
+              <div className="h-10 w-10 rounded-xl bg-white/15 text-white border border-white/25 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Zap className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-[10px] text-white/90 font-mono uppercase tracking-wider bg-white/10 border border-white/20 px-2.5 py-0.5 rounded-full font-semibold">
+                Join Us
+              </span>
             </div>
-            <h3 className="mt-3 font-heading text-[15px] font-bold tracking-tight text-white">
-              Join the Guild
+            <h3 className="mt-4 font-heading text-base font-bold tracking-tight text-white">
+              Join the Tech Guild
             </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-white/80">
-              Create your developer profile today to connect, learn, and collaborate with Bengal&apos;s tech community.
+            <p className="mt-2 text-xs leading-relaxed text-white/85">
+              Build your developer profile today to showcase your projects, connect with peers, and unlock opportunities.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-white/15 flex flex-col gap-2">
+          <div className="mt-5 pt-3.5 border-t border-white/15 flex flex-col gap-2.5">
             <button
               onClick={() => window.dispatchEvent(new Event("open-onboarding"))}
-              className="w-full py-2 bg-white text-[#072049] hover:bg-white/90 font-bold text-xs rounded-lg transition-all cursor-pointer shadow-xs"
+              className="w-full py-2.5 bg-white text-[#072049] hover:bg-white/90 font-bold text-xs rounded-xl transition-all cursor-pointer shadow-sm hover:shadow-md"
             >
-              Register Now
+              Create Profile
             </button>
-            <span className="text-[10px] text-white/60 text-center font-mono">No entry fee • Zero gatekeeping</span>
+            <span className="text-[10px] text-white/70 text-center font-mono">No entry fee • Zero gatekeeping</span>
           </div>
         </div>
       </div>
