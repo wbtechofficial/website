@@ -1,7 +1,7 @@
-import Link from "next/link";
+"use client";
+
 import { ArrowRight, Sparkles, Check } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export function NewsletterCard() {
   return (
@@ -24,18 +24,17 @@ export function NewsletterCard() {
               Join 1,200+ developers, startup founders, and engineering leaders
               receiving our curated Friday newsletter. Zero spam, high signal.
             </p>
-            {/* <div className="pt-2">
-              <Link
-                href="/newsletter"
-                className={cn(
-                  buttonVariants({ variant: "default", size: "default" }),
-                  "rounded-xl px-5 py-2.5 font-semibold text-xs sm:text-sm shadow-sm gap-1.5 inline-flex cursor-pointer transition-all hover:shadow-md",
-                )}
+            <div className="pt-2">
+              <Button
+                onClick={() =>
+                  window.dispatchEvent(new Event("open-onboarding"))
+                }
+                className="h-11 rounded-none px-8 font-semibold text-white text-xs sm:text-sm shadow-sm hover:shadow-md transition-all gap-2 group cursor-pointer inline-flex items-center justify-center"
               >
-                <span>Browse Archive</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div> */}
+                <span>Join the Community</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+            </div>
           </div>
 
           {/* Right Column: Key Bullet Pointers */}
