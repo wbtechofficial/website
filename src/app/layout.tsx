@@ -61,8 +61,18 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/brand-logo/west-bengal-tech-short-teal.svg",
-    apple: "/brand-logo/west-bengal-tech-short-teal.svg",
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/brand-logo/west-bengal-tech-short-teal.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [{ url: '/favicon-48.png', sizes: '48x48', type: 'image/png' }],
+  },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/brand-logo/west-bengal-tech-short-teal.svg", type: "image/svg+xml" }],
   },
   category: "technology",
 };
