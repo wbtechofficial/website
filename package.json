@@ -26,6 +26,7 @@
     "next": "16.3.0",
     "next-themes": "^0.4.6",
     "react": "19.2.8",
+    "react-countup": "^6.5.3",
     "react-day-picker": "^10.0.1",
     "react-dom": "19.2.8",
     "react-hook-form": "^7.85.0",

@@ -78,3 +78,19 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     message: "Successfully joined the community!",
   };
 }
+
+export async function getRegisteredUserCountAction() {
+  const supabase = await createClient();
+
+  const { count, error } = await supabase
+    .from("profiles")
+    .select("*", { count: "exact", head: true });
+    
+
+  if (error) {
+    console.error("Supabase registered user count error:", error);
+    throw new Error("Failed to fetch registered user count.");
+  }
+
+  return count ?? 0;
+}

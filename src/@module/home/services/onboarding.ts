@@ -6,4 +6,12 @@ export const onboardingService = {
     const response = await apiClient.post("/onboarding", data);
     return response.data;
   },
+
+  async getRegisteredCount() {
+    const response = await apiClient.get<{ count: number }>(
+      "/onboarding/count",
+      { params: { t: Date.now() } },
+    );
+    return response.data.count;
+  },
 };
