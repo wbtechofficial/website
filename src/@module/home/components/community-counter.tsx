@@ -12,27 +12,24 @@ export function CommunityCounter({ refreshKey = 0 }: CommunityCounterProps) {
 
   return (
     <p
-      className="mt-6 h-5 text-sm leading-5 text-muted-foreground"
-      role="status"
-      aria-live="polite"
+      className='mt-6 h-5 text-sm leading-5 text-muted-foreground'
+      role='status'
+      aria-live='polite'
     >
       {count === null ? (
         <>
-          <span
-            className="inline-block h-3.5 w-6 align-text-bottom bg-foreground/25 animate-pulse"
-            aria-hidden
-          />{" "}
-          <span className="text-lg">Members Joined</span>
-          </>
+          <span className='font-bold text-foreground tabular-nums text-lg'>0&nbsp;</span>
+          <span className='text-lg'>Members Joined</span>
+        </>
       ) : (
         <>
           <CountUp
             end={count}
             duration={1.4}
             preserveValue
-            className="font-bold text-foreground tabular-nums text-lg"
+            className='font-bold text-foreground tabular-nums text-lg'
           />{" "}
-          <span className="text-lg">Members Joined</span>
+          <span className='text-lg'>Members Joined</span>
         </>
       )}
     </p>
