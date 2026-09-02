@@ -13,12 +13,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { OnboardingForm } from "@/@module/home/components/onboarding-form";
+import { CommunityCounter } from "@/@module/home/components/community-counter";
 import { onboardingService } from "@/@module/home/services/onboarding";
 import { toast } from "@/components/ui/toast";
 
 export function HeroSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [countRefreshKey, setCountRefreshKey] = useState(0);
 
   useEffect(() => {
     const handleOpen = () => setIsOpen(true);
@@ -35,6 +37,10 @@ export function HeroSection() {
         description: `Welcome to the community, ${data.name}!`,
         type: "success",
       });
+      const timer = setTimeout(() => {
+        setCountRefreshKey((key) => key + 1);
+        clearTimeout(timer)
+      }, 1000)
       setIsOpen(false);
     } catch (error: any) {
       toast.add({
@@ -112,6 +118,8 @@ export function HeroSection() {
             <Code2 className="h-4 w-4 text-primary" />
           </a> */}
         </div>
+
+        <CommunityCounter refreshKey={countRefreshKey} />
 
         {/* Metrics Grid to Fill Whitespace */}
         {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mt-16 sm:mt-24 w-full">

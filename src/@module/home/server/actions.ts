@@ -14,7 +14,8 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     throw new Error("Validation failed. Please check your form inputs.");
   }
 
-  const { name, email, contactNumber, profession, organisation_name } = validation.data;
+  const { name, email, contactNumber, profession, organisation_name } =
+    validation.data;
 
   // 2. Initialize Supabase client
   const supabase = await createClient();
@@ -77,4 +78,32 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     success: true,
     message: "Successfully joined the community!",
   };
+}
+
+export async function getRegisteredUserCountAction(): Promise<number> {
+  try {
+    const supabase = await createClient();
+
+    const { data: rpcCount, error: rpcError } = await supabase.rpc(
+      "get_registered_user_count",
+    );
+
+    if (!rpcError && typeof rpcCount === "number") {
+      return rpcCount;
+    }
+
+    const { count, error } = await supabase
+      .from("profiles")
+      .select("*", { count: "exact", head: true });
+
+    if (error) {
+      console.error("Supabase count query error:", error);
+      return 0;
+    }
+
+    return count ?? 0;
+  } catch (error) {
+    console.error("Unexpected error in getRegisteredUserCountAction:", error);
+    return 0;
+  }
 }
