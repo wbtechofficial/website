@@ -1,36 +1,22 @@
-import { forwardRef, useState } from "react";
-import {
-    User,
-    Mail,
-    Phone,
-    Briefcase,
-    GraduationCap,
-    Building2,
-    Check,
-    ChevronDown,
-} from "lucide-react";
+import { forwardRef } from "react";
+import { User, Mail, Briefcase, GraduationCap, Building2 } from "lucide-react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { OnboardingFormData, OnboardingFormInput, onboardingFormSchema } from "../schemas/onboarding.schema";
+import {
+    OnboardingFormData,
+    OnboardingFormInput,
+    onboardingFormSchema,
+} from "../schemas/onboarding.schema";
 
 import { cn } from "@/lib/utils";
-import { FieldGroup, Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-    Command,
-    CommandEmpty,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { FieldGroup } from "@/components/ui/field";
+
 import FormBanner from "@/components/custom/form/form-banner";
 import FormHeader from "@/components/custom/form/form-header";
 import FormSubmitButton from "@/components/custom/form/form-submit-button";
 import IconFormInputField from "@/components/custom/form/form-input-field";
 import FormToggleInputField from "@/components/custom/form/form-toggle-input-field";
-import { CountryDialCode, getCountryByIso } from "@/lib/country-codes";
-import { COUNTRY_DIAL_CODES } from "@/base/constants/country-codes";
+import PhoneNumberField from "@/components/custom/form/form-phone-number-field";
 
 interface OnboardingFormProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSubmit"> {
     title: string;
@@ -54,146 +40,6 @@ const professionOptions = [
 const onboardingFormCoverImage =
     "https://images.unsplash.com/photo-1758270705317-3ef6142d306f?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
-function CountryCodePicker({
-    selected,
-    onSelect,
-    onBlur,
-    invalid,
-}: {
-    selected: CountryDialCode;
-    onSelect: (country: CountryDialCode) => void;
-    onBlur: () => void;
-    invalid: boolean;
-}) {
-    const [open, setOpen] = useState(false);
-    const [search, setSearch] = useState("");
-
-    return (
-        <Popover
-            open={open}
-            onOpenChange={(next) => {
-                setOpen(next);
-                if (!next) {
-                    setSearch("");
-                    onBlur();
-                }
-            }}
-        >
-            <div className="relative shrink-0">
-                <div className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground flex items-center justify-center pointer-events-none">
-                    <Phone className="h-4 w-4" />
-                </div>
-                <PopoverTrigger
-                    aria-label="Country code"
-                    aria-invalid={invalid}
-                    className="flex h-10 items-center gap-1.5 rounded-none border border-input bg-muted/20 hover:bg-muted/40 transition-all pl-10 pr-2 text-sm outline-none max-w-[136px] aria-invalid:border-destructive"
-                >
-                    <span className="font-semibold">{selected.iso}</span>
-                    <span className="text-muted-foreground">+{selected.dial}</span>
-                    <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
-                </PopoverTrigger>
-            </div>
-            <PopoverContent align="start" className="w-[300px] p-1">
-                <Command>
-                    <CommandInput
-                        placeholder="Search country or code..."
-                        value={search}
-                        onValueChange={setSearch}
-                    />
-                    <CommandList>
-                        <CommandEmpty>No country found.</CommandEmpty>
-                        {COUNTRY_DIAL_CODES.map((c) => (
-                            <CommandItem
-                                key={c.iso}
-                                value={`${c.name} ${c.iso} ${c.dial}`}
-                                onSelect={() => {
-                                    onSelect(c);
-                                    setOpen(false);
-                                    setSearch("");
-                                }}
-                            >
-                                <span className="font-semibold w-7 shrink-0">{c.iso}</span>
-                                <span className="flex-1 truncate">{c.name}</span>
-                                <span className="text-muted-foreground shrink-0">+{c.dial}</span>
-                                <Check
-                                    className={cn(
-                                        "h-4 w-4 shrink-0",
-                                        c.iso === selected.iso ? "opacity-100" : "opacity-0",
-                                    )}
-                                />
-                            </CommandItem>
-                        ))}
-                    </CommandList>
-                </Command>
-            </PopoverContent>
-        </Popover>
-    );
-}
-
-interface PhoneNumberFieldProps {
-    value: string;
-    iso: string;
-    onChange: (value: string) => void;
-    onIsoChange: (iso: string) => void;
-    onBlur: () => void;
-    error?: string;
-}
-
-function PhoneNumberField({ value, iso, onChange, onIsoChange, onBlur, error }: PhoneNumberFieldProps) {
-    // Source of truth for dial code is the explicitly selected ISO —
-    // never re-derive ISO from the number (US/CA both share +1).
-    const selected = getCountryByIso(iso);
-    // Strip the selected country's dial prefix; no dial→ISO guessing here.
-    const national = (value ?? "").startsWith(`+${selected.dial}`)
-        ? (value ?? "").slice(selected.dial.length + 1).replace(/\D/g, "")
-        : (value ?? "").replace(/\D/g, "");
-
-    const commitNational = (nat: string) => {
-        onChange(nat ? `+${selected.dial}${nat}` : "");
-    };
-
-    const handleSelectCountry = (c: CountryDialCode) => {
-        onIsoChange(c.iso);
-        // Rebuild E.164 with the newly selected country's dial, keeping digits.
-        onChange(national ? `+${c.dial}${national}` : "");
-    };
-
-    const isInvalid = !!error;
-
-    return (
-        <Field data-invalid={isInvalid}>
-            <FieldLabel htmlFor="contactNumber">Contact Number</FieldLabel>
-            <div className="flex gap-2">
-                <CountryCodePicker
-                    selected={selected}
-                    onSelect={handleSelectCountry}
-                    onBlur={onBlur}
-                    invalid={isInvalid}
-                />
-                <Input
-                    id="contactNumber"
-                    type="tel"
-                    inputMode="numeric"
-                    autoComplete="tel-national"
-                    placeholder="Mobile number"
-                    maxLength={15}
-                    aria-invalid={isInvalid}
-                    aria-describedby={isInvalid ? "contactNumber-error" : undefined}
-                    className="h-10 rounded-none bg-muted/20 focus:bg-background transition-all"
-                    value={national}
-                    onChange={(e) => {
-                        commitNational(e.target.value.replace(/\D/g, "").slice(0, 15));
-                    }}
-                    onBlur={onBlur}
-                />
-            </div>
-            {isInvalid && error && (
-                <FieldError id="contactNumber-error" errors={[{ message: error }]} />
-            )}
-        </Field>
-    );
-}
-
 export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
     (
         { className, title, description, buttonText, onSubmit, isSubmitting = false, ...props },
@@ -211,14 +57,14 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
             defaultValues: {
                 name: "",
                 email: "",
-                countryIso: "IN",
+                countryCode: "IN",
                 contactNumber: "",
                 profession: "Working Professional",
                 organisation_name: "",
             },
         });
 
-        const countryIso = watch("countryIso");
+        const countryIso = watch("countryCode");
 
         const handleFormSubmit = handleSubmit((data) => {
             onSubmit(data);
@@ -281,7 +127,7 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
                             />
 
                             {/* Contact Number Field */}
-                            <input type="hidden" {...register("countryIso")} />
+                            <input type="hidden" {...register("countryCode")} />
                             <Controller
                                 name="contactNumber"
                                 control={control}
@@ -291,7 +137,7 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
                                         iso={countryIso}
                                         onChange={field.onChange}
                                         onIsoChange={(iso) =>
-                                            setValue("countryIso", iso, {
+                                            setValue("countryCode", iso, {
                                                 shouldValidate: true,
                                                 shouldDirty: true,
                                             })

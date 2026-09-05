@@ -12,17 +12,17 @@ export async function joinCommunityAction(data: OnboardingFormData) {
         throw new Error("Validation failed. Please check your form inputs.");
     }
 
-    const { name, email, contactNumber, countryIso, profession, organisation_name } =
+    const { name, email, contactNumber, countryCode, profession, organisation_name } =
         validation.data;
 
-    const known = COUNTRY_BY_ISO.get(countryIso);
+    const known = COUNTRY_BY_ISO.get(countryCode);
     if (!known) {
         throw new Error("Validation failed. Please select a valid country code.");
     }
     if (!contactNumber.startsWith(`+${known.dial}`)) {
         throw new Error("Validation failed. Please check your form inputs.");
     }
-    const countryCode = known.iso;
+    const validCountryCode = known.iso;
 
     // 2. Initialize Supabase client
     const supabase = await createClient();
@@ -64,7 +64,7 @@ export async function joinCommunityAction(data: OnboardingFormData) {
         name,
         email,
         contact_number: contactNumber,
-        country_code: countryCode,
+        country_code: validCountryCode,
         profession,
         organisation_name,
     };

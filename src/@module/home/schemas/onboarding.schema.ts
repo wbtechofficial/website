@@ -12,7 +12,7 @@ export const onboardingFormSchema = z
             .max(50, "Name must be at most 50 characters."),
         email: z.string().email("Invalid email address."),
 
-        countryIso: z
+        countryCode: z
             .string()
             .trim()
             .toUpperCase()
@@ -42,7 +42,7 @@ export const onboardingFormSchema = z
             .max(100, "Organisation/Institution name must be at most 100 characters."),
     })
     .superRefine((val, ctx) => {
-        const expectedDial = DIAL_BY_ISO.get(val.countryIso);
+        const expectedDial = DIAL_BY_ISO.get(val.countryCode);
         if (expectedDial && !val.contactNumber.startsWith(`+${expectedDial}`)) {
             ctx.addIssue({
                 code: "custom",
