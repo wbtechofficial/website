@@ -17,6 +17,10 @@ export async function joinCommunityAction(data: OnboardingFormData) {
   const { name, email, contactNumber, profession, organisation_name } =
     validation.data;
 
+  // Client displays E.164 with leading "+" (e.g. "+91..."), but DB stores
+  // digits only without the "+" (e.g. "919876543210").
+  const dbContactNumber = contactNumber.replace(/^\+/, "");
+
   // 2. Initialize Supabase client
   const supabase = await createClient();
 
@@ -37,10 +41,11 @@ export async function joinCommunityAction(data: OnboardingFormData) {
   }
 
   // 4. Guard rail: Check if contact number already exists
+  // Match both legacy "+..." and new "+"-stripped formats during migration.
   const { data: existingPhone, error: phoneCheckError } = await supabase
     .from("profiles")
     .select("contact_number")
-    .eq("contact_number", contactNumber)
+    .in("contact_number", [contactNumber, dbContactNumber])
     .maybeSingle();
 
   if (phoneCheckError) {
@@ -52,11 +57,11 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     throw new Error("Contact number is already registered in the community.");
   }
 
-  // 5. Insert new record
+  // 5. Insert new record (without leading "+")
   const { error: insertError } = await supabase.from("profiles").insert({
     name,
     email,
-    contact_number: contactNumber,
+    contact_number: dbContactNumber,
     profession,
     organisation_name,
   });
