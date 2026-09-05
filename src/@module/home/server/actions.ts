@@ -2,7 +2,7 @@
 
 import { createClient } from "@/integrations/supabase/server";
 import { sendWelcomeEmail } from "@/lib/email";
-import { splitE164 } from "@/lib/country-codes";
+import { COUNTRY_BY_ISO } from "@/lib/country-codes";
 import { onboardingFormSchema, type OnboardingFormData } from "../schemas/onboarding.schema";
 
 export async function joinCommunityAction(data: OnboardingFormData) {
@@ -12,10 +12,25 @@ export async function joinCommunityAction(data: OnboardingFormData) {
         throw new Error("Validation failed. Please check your form inputs.");
     }
 
-    const { name, email, contactNumber, profession, organisation_name } = validation.data;
+    const { name, email, contactNumber, countryIso, profession, organisation_name } =
+        validation.data;
 
-    // Derive country ISO (e.g. "IN") from the E.164 dial code automatically.
-    const countryCode = splitE164(contactNumber).iso;
+    // Source of truth is the ISO explicitly selected in the picker.
+    // Never guess ISO back from the dial code — shared dials (US/CA → +1,
+    // RU/KZ → +7, GB/GG/IM/JE → +44, ...) would collapse to one country.
+    // No fallback guessing: reject payloads without a valid, matching ISO.
+    const known = COUNTRY_BY_ISO.get(countryIso);
+    if (!known) {
+        throw new Error("Validation failed. Please select a valid country code.");
+    }
+    if (!contactNumber.startsWith(`+${known.dial}`)) {
+        throw new Error("Validation failed. Please check your form inputs.");
+    }
+    // Normalize (e.g. lowercase "ca" → "CA").
+    const countryCode = known.iso;
+    // Keep E.164 consistent with the authoritative ISO (Canada → +1, India → +91).
+    // The client already builds contactNumber as `+dial(ISO)+national`,
+    // and the schema rejects ISO/dial mismatches, so no rebuild needed here.
 
     // 2. Initialize Supabase client
     const supabase = await createClient();
@@ -53,14 +68,15 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     }
 
     // 5. Insert new record (E.164 with leading "+")
-    const { error: insertError } = await supabase.from("profiles").insert({
+    const insertPayload = {
         name,
         email,
         contact_number: contactNumber,
         country_code: countryCode,
         profession,
         organisation_name,
-    });
+    };
+    const { error: insertError } = await supabase.from("profiles").insert(insertPayload);
 
     if (insertError) {
         console.error("Supabase insert error:", insertError);

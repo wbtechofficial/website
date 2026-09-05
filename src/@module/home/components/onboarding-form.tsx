@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { OnboardingFormData, onboardingFormSchema } from "../schemas/onboarding.schema";
+import { OnboardingFormData, OnboardingFormInput, onboardingFormSchema } from "../schemas/onboarding.schema";
 
 import { cn } from "@/lib/utils";
 import { FieldGroup, Field, FieldLabel, FieldError } from "@/components/ui/field";
@@ -29,7 +29,7 @@ import FormHeader from "@/components/custom/form/form-header";
 import FormSubmitButton from "@/components/custom/form/form-submit-button";
 import IconFormInputField from "@/components/custom/form/form-input-field";
 import FormToggleInputField from "@/components/custom/form/form-toggle-input-field";
-import { CountryDialCode, getCountryByIso, splitE164 } from "@/lib/country-codes";
+import { CountryDialCode, getCountryByIso } from "@/lib/country-codes";
 import { COUNTRY_DIAL_CODES } from "@/base/constants/country-codes";
 
 interface OnboardingFormProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSubmit"> {
@@ -132,22 +132,30 @@ function CountryCodePicker({
 
 interface PhoneNumberFieldProps {
     value: string;
+    iso: string;
     onChange: (value: string) => void;
+    onIsoChange: (iso: string) => void;
     onBlur: () => void;
     error?: string;
 }
 
-function PhoneNumberField({ value, onChange, onBlur, error }: PhoneNumberFieldProps) {
-    const [[countryIso, national], setParts] = useState<[string, string]>(() => {
-        const parts = splitE164(value ?? "");
-        return [parts.iso, parts.national];
-    });
-    const selected = getCountryByIso(countryIso);
+function PhoneNumberField({ value, iso, onChange, onIsoChange, onBlur, error }: PhoneNumberFieldProps) {
+    // Source of truth for dial code is the explicitly selected ISO —
+    // never re-derive ISO from the number (US/CA both share +1).
+    const selected = getCountryByIso(iso);
+    // Strip the selected country's dial prefix; no dial→ISO guessing here.
+    const national = (value ?? "").startsWith(`+${selected.dial}`)
+        ? (value ?? "").slice(selected.dial.length + 1).replace(/\D/g, "")
+        : (value ?? "").replace(/\D/g, "");
 
-    const commit = (iso: string, nat: string) => {
-        setParts([iso, nat]);
-        const dial = getCountryByIso(iso).dial;
-        onChange(nat ? `+${dial}${nat}` : "");
+    const commitNational = (nat: string) => {
+        onChange(nat ? `+${selected.dial}${nat}` : "");
+    };
+
+    const handleSelectCountry = (c: CountryDialCode) => {
+        onIsoChange(c.iso);
+        // Rebuild E.164 with the newly selected country's dial, keeping digits.
+        onChange(national ? `+${c.dial}${national}` : "");
     };
 
     const isInvalid = !!error;
@@ -158,7 +166,7 @@ function PhoneNumberField({ value, onChange, onBlur, error }: PhoneNumberFieldPr
             <div className="flex gap-2">
                 <CountryCodePicker
                     selected={selected}
-                    onSelect={(c) => commit(c.iso, national)}
+                    onSelect={handleSelectCountry}
                     onBlur={onBlur}
                     invalid={isInvalid}
                 />
@@ -174,7 +182,7 @@ function PhoneNumberField({ value, onChange, onBlur, error }: PhoneNumberFieldPr
                     className="h-10 rounded-none bg-muted/20 focus:bg-background transition-all"
                     value={national}
                     onChange={(e) => {
-                        commit(countryIso, e.target.value.replace(/\D/g, "").slice(0, 15));
+                        commitNational(e.target.value.replace(/\D/g, "").slice(0, 15));
                     }}
                     onBlur={onBlur}
                 />
@@ -195,17 +203,22 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
             register,
             handleSubmit,
             control,
+            setValue,
+            watch,
             formState: { errors, isSubmitting: isSubmittingState },
-        } = useForm<OnboardingFormData>({
+        } = useForm<OnboardingFormInput, unknown, OnboardingFormData>({
             resolver: zodResolver(onboardingFormSchema),
             defaultValues: {
                 name: "",
                 email: "",
+                countryIso: "IN",
                 contactNumber: "",
                 profession: "Working Professional",
                 organisation_name: "",
             },
         });
+
+        const countryIso = watch("countryIso");
 
         const handleFormSubmit = handleSubmit((data) => {
             onSubmit(data);
@@ -268,13 +281,21 @@ export const OnboardingForm = forwardRef<HTMLDivElement, OnboardingFormProps>(
                             />
 
                             {/* Contact Number Field */}
+                            <input type="hidden" {...register("countryIso")} />
                             <Controller
                                 name="contactNumber"
                                 control={control}
                                 render={({ field }) => (
                                     <PhoneNumberField
                                         value={field.value}
+                                        iso={countryIso}
                                         onChange={field.onChange}
+                                        onIsoChange={(iso) =>
+                                            setValue("countryIso", iso, {
+                                                shouldValidate: true,
+                                                shouldDirty: true,
+                                            })
+                                        }
                                         onBlur={field.onBlur}
                                         error={errors.contactNumber?.message}
                                     />
