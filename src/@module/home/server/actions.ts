@@ -2,6 +2,7 @@
 
 import { createClient } from "@/integrations/supabase/server";
 import { sendWelcomeEmail } from "@/lib/email";
+import { splitE164 } from "@/lib/country-codes";
 import {
   onboardingFormSchema,
   type OnboardingFormData,
@@ -17,9 +18,8 @@ export async function joinCommunityAction(data: OnboardingFormData) {
   const { name, email, contactNumber, profession, organisation_name } =
     validation.data;
 
-  // Client displays E.164 with leading "+" (e.g. "+91..."), but DB stores
-  // digits only without the "+" (e.g. "919876543210").
-  const dbContactNumber = contactNumber.replace(/^\+/, "");
+  // Derive country ISO (e.g. "IN") from the E.164 dial code automatically.
+  const countryIso = splitE164(contactNumber).iso;
 
   // 2. Initialize Supabase client
   const supabase = await createClient();
@@ -41,11 +41,10 @@ export async function joinCommunityAction(data: OnboardingFormData) {
   }
 
   // 4. Guard rail: Check if contact number already exists
-  // Match both legacy "+..." and new "+"-stripped formats during migration.
   const { data: existingPhone, error: phoneCheckError } = await supabase
     .from("profiles")
     .select("contact_number")
-    .in("contact_number", [contactNumber, dbContactNumber])
+    .eq("contact_number", contactNumber)
     .maybeSingle();
 
   if (phoneCheckError) {
@@ -57,11 +56,12 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     throw new Error("Contact number is already registered in the community.");
   }
 
-  // 5. Insert new record (without leading "+")
+  // 5. Insert new record (E.164 with leading "+")
   const { error: insertError } = await supabase.from("profiles").insert({
     name,
     email,
-    contact_number: dbContactNumber,
+    contact_number: contactNumber,
+    country_iso: countryIso,
     profession,
     organisation_name,
   });
