@@ -9,11 +9,13 @@ const envSchema = z.object({
   SUPABASE_PUBLISHABLE_KEY: z
     .string()
     .min(1, "SUPABASE_PUBLISHABLE_KEY is required"),
+  RESEND_KEY: z.string().min(1, "RESEND_KEY is required"),
 });
 
 const parsed = envSchema.safeParse({
   SUPABASE_URL: process.env.SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY: process.env.SUPABASE_PUBLISHABLE_KEY,
+  RESEND_KEY: process.env.RESEND_KEY,
 });
 
 if (!parsed.success) {

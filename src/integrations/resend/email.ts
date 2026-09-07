@@ -1,6 +1,7 @@
 import { Resend } from "resend";
+import { config } from "@/base/config/env";
 
-const resendApiKey = process.env.RESEND_KEY;
+const resendApiKey = config.RESEND_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 interface SendWelcomeEmailParams {
@@ -8,9 +9,14 @@ interface SendWelcomeEmailParams {
   name: string;
 }
 
-export async function sendWelcomeEmail({ email, name }: SendWelcomeEmailParams) {
+export async function sendWelcomeEmail({
+  email,
+  name,
+}: SendWelcomeEmailParams) {
   if (!resend) {
-    console.warn("RESEND_KEY is missing in environment variables. Email not sent.");
+    console.warn(
+      "RESEND_KEY is missing in environment variables. Email not sent.",
+    );
     return { success: false, error: "RESEND_KEY not configured" };
   }
 
