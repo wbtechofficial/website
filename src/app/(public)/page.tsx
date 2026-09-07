@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { DevelopersSection } from "@/@module/home/components/developers-section";
 import { HeroSection } from "@/@module/home/components/hero-section";
 import RibbonTicker from "@/components/custom/ribbon-ticker";
-import RoadmapSection from "@/@module/home/components/roadmap-section/roadmap-section";
-
+import RoadmapSection from "@/@module/home/components/roadmap-section";
 import { SITE_CONFIG } from "@/lib/seo-config";
 import { JsonLd } from "@/components/custom/json-ld";
 
