@@ -5,6 +5,7 @@ if (typeof window !== "undefined") {
 }
 
 const envSchema = z.object({
+  APP_BASE_URL: z.string().url("APP_BASE_URL must be a valid URL"),
   SUPABASE_URL: z.string().url("SUPABASE_URL must be a valid URL"),
   SUPABASE_PUBLISHABLE_KEY: z
     .string()
@@ -13,6 +14,7 @@ const envSchema = z.object({
 });
 
 const parsed = envSchema.safeParse({
+  APP_BASE_URL: process.env.APP_BASE_URL,
   SUPABASE_URL: process.env.SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY: process.env.SUPABASE_PUBLISHABLE_KEY,
   RESEND_KEY: process.env.RESEND_KEY,
