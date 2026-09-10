@@ -63,8 +63,11 @@ npm install
 # or
 pnpm install
 ```
+### 3. .env Setup
+- Create a `.env` at the root of the folder and copy the template from `example.env` and paste it in `.env` 
+- Go to supabase and create a new project, choose **Supabase client library** and paste the keys in `.env` file
 
-### 3. Start the Development Server
+### 4. Start the Development Server
 ```bash
 npm run dev
 ```
