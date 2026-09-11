@@ -4,6 +4,40 @@ import { createClient } from "@/integrations/supabase/server";
 import { sendWelcomeEmail } from "@/lib/email";
 import { COUNTRY_BY_ISO } from "@/lib/country-codes";
 import { onboardingFormSchema, type OnboardingFormData } from "../schemas/onboarding.schema";
+import { OnboardingConflictError } from "./onboarding-errors";
+
+/**
+ * Maps a Postgres unique-violation (23505) raised by the `profiles` table
+ * to the form field that caused it, based on the constraint/column name in
+ * the error. Falls back to a generic conflict if the column can't be
+ * determined (e.g. constraint renamed in the DB) so we never leak the raw
+ * error to the client.
+ */
+function toOnboardingConflictError(insertError: {
+    code?: string;
+    message?: string;
+    details?: string | null;
+}): OnboardingConflictError | null {
+    if (insertError.code !== "23505") return null;
+
+    const text = `${insertError.message ?? ""} ${insertError.details ?? ""}`.toLowerCase();
+
+    if (text.includes("email")) {
+        return new OnboardingConflictError("email", "This email is already registered.");
+    }
+    if (text.includes("contact_number") || text.includes("phone")) {
+        return new OnboardingConflictError(
+            "contactNumber",
+            "This phone number is already registered.",
+        );
+    }
+
+    // Unknown unique constraint - still avoid leaking the raw DB error.
+    return new OnboardingConflictError(
+        "email",
+        "This email or phone number is already registered.",
+    );
+}
 
 export async function joinCommunityAction(data: OnboardingFormData) {
     // 1. Validate payload using the zod schema
@@ -40,7 +74,7 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     }
 
     if (existingEmail) {
-        throw new Error("Email address is already registered in the community.");
+        throw new OnboardingConflictError("email", "This email is already registered.");
     }
 
     // 4. Guard rail: Check if contact number already exists
@@ -56,7 +90,10 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     }
 
     if (existingPhone) {
-        throw new Error("Contact number is already registered in the community.");
+        throw new OnboardingConflictError(
+            "contactNumber",
+            "This phone number is already registered.",
+        );
     }
 
     // 5. Insert new record (E.164 with leading "+")
@@ -71,7 +108,18 @@ export async function joinCommunityAction(data: OnboardingFormData) {
     const { error: insertError } = await supabase.from("profiles").insert(insertPayload);
 
     if (insertError) {
+        // Log full details server-side only; the client never sees raw DB errors.
         console.error("Supabase insert error:", insertError);
+
+        // A duplicate can still slip through between the guard-rail checks
+        // above and this insert (race condition between two concurrent
+        // submissions). Translate it into the same friendly, field-specific
+        // error the guard rails use instead of a generic failure.
+        const conflictError = toOnboardingConflictError(insertError);
+        if (conflictError) {
+            throw conflictError;
+        }
+
         throw new Error("Failed to submit onboarding profile. Please try again.");
     }
 
