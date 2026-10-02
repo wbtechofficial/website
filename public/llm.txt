@@ -1,0 +1,12 @@
+# westbengal.tech
+
+> The official open digital hub for software developers, tech startups, open-source projects, community events, and engineering careers across Kolkata and West Bengal.
+
+## Core pages
+
+- [Home](https://westbengal.tech/): Overview of the West Bengal developer network, local technology ecosystem, community initiatives, and current opportunities.
+
+## Public discovery resources
+
+- [Sitemap](https://westbengal.tech/sitemap.xml): Machine-readable index of the site's public pages.
+- [Robots policy](https://westbengal.tech/robots.txt): Crawler access rules and the canonical sitemap location.
